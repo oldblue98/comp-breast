@@ -137,8 +137,6 @@ if __name__ == '__main__':
     print(tst_preds_label_all.shape)
     # 予測結果を保存
     sub = pd.read_csv("./data/sample_submission.csv")
-    sub['class'] = tst_preds_label_all
-    label_dic = {"daisy":0, "dandelion":1, "rose":2,"sunflower":3, "tulip":4}
-    sub["class"] = sub["class"].map(label_dic)
-    logger.debug(sub.value_counts("class"))
+    sub['label'] = tst_preds_label_all
+    logger.debug(sub.value_counts("label"))
     sub.to_csv(f'data/output/submission_{config_filename}_{CFG["model_arch"]}.csv', index=False)
