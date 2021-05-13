@@ -1,3 +1,6 @@
+import sys
+sys.path.append('pytorch-image-models/')
+
 import numpy as np
 import torch
 from torch import nn
