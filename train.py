@@ -64,7 +64,7 @@ def main():
 
     logger.debug(CFG)
 
-    train = load_train_df("./data/train/")
+    train = load_train_df("./data/input/train/")
 
     seed_everything(CFG['seed'])
 
