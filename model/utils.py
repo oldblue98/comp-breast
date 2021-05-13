@@ -25,6 +25,24 @@ def get_img(path):
     im_rgb = im_bgr[:, :, ::-1]
     return im_rgb
 
+def load_train_df(path):
+    train_df = pd.DataFrame()
+    base_train_data_path = path
+
+    train_data_labels = ['0', '1']
+
+    for one_label in train_data_labels:
+        one_label_df = pd.DataFrame()
+        one_label_paths = os.path.join(base_train_data_path, one_label)
+        one_label_df['image_path'] = [os.path.join(one_label_paths, f) for f in os.listdir(one_label_paths)]
+        one_label_df['label'] = one_label
+        train_df = pd.concat([train_df, one_label_df])
+    train_df = train_df.reset_index(drop=True)
+    label_dic = {"0":0, "1":1}
+    train_df["label"]=train_df["label"].map(label_dic)
+    return train_df
+
+
 class EarlyStopping:
     """Early stops the training if validation loss doesn't improve after a given patience."""
     def __init__(self, patience=7, verbose=False, delta=0, path='checkpoint.pt', trace_func=print, min_epoch=5):

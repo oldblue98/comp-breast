@@ -38,7 +38,7 @@ from model.transform import get_train_transforms, get_valid_transforms, get_infe
 from model.dataset import FlowerDataset
 from model.model import FlowerImgClassifier
 from model.epoch_api import train_one_epoch, valid_one_epoch, inference_one_epoch
-from model.utils import seed_everything
+from model.utils import seed_everything, load_train_df
 
 
 test = pd.DataFrame()
@@ -46,27 +46,9 @@ base_test_data_path = './data/input/test/test_image'
 test['image_path'] = [os.path.join(base_test_data_path, f) for f in os.listdir(base_test_data_path)]
 test = test.sort_values('image_path').reset_index(drop=True)
 
-def load_train_df(path):
-    train_df = pd.DataFrame()
-    base_train_data_path = path
-
-    train_data_labels = ['0', '1']
-
-    for one_label in train_data_labels:
-        one_label_df = pd.DataFrame()
-        one_label_paths = os.path.join(base_train_data_path, one_label)
-        one_label_df['image_path'] = [os.path.join(one_label_paths, f) for f in os.listdir(one_label_paths)]
-        one_label_df['label'] = one_label
-        train_df = pd.concat([train_df, one_label_df])
-    train_df = train_df.reset_index(drop=True)
-    label_dic = {"0":0, "1":1}
-    train_df["label"]=train_df["label"].map(label_dic)
-    return train_df
-
-
 def infer():
     logger.debug("pred start")
-    train = load_train_df("./data/train/")
+    train = load_train_df("./data/input/train/")
     seed_everything(CFG['seed'])
 
     folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
