@@ -39,11 +39,9 @@ def load_train_df(path):
     train_df = pd.DataFrame()
     base_train_data_path = path
 
-    train_data_labels = ['daisy',
-                        'dandelion',
-                        'rose',
-                        'sunflower',
-                        'tulip']
+    train_data_labels = ['0',
+                        '1'
+                        ]
 
     for one_label in train_data_labels:
         one_label_df = pd.DataFrame()
@@ -52,7 +50,7 @@ def load_train_df(path):
         one_label_df['label'] = one_label
         train_df = pd.concat([train_df, one_label_df])
     train_df = train_df.reset_index(drop=True)
-    label_dic = {"daisy":0, "dandelion":1, "rose":2,"sunflower":3, "tulip":4}
+    label_dic = {"0":0, "1":1}
     train_df["label"]=train_df["label"].map(label_dic)
     return train_df
 
