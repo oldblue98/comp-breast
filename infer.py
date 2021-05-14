@@ -47,7 +47,7 @@ from model.utils import seed_everything, load_train_df
 test = pd.DataFrame()
 base_test_data_path = './data/input/test/test_image'
 test['image_path'] = [os.path.join(base_test_data_path, f) for f in os.listdir(base_test_data_path)]
-test = test.sort_values('image_path').reset_index(drop=True)
+# test = test.sort_values('image_path').reset_index(drop=True)
 
 def infer():
     logger.debug("pred start")
@@ -56,6 +56,7 @@ def infer():
 
     # folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
     folds = GroupKFold(n_splits=5).split(np.arange(train.shape[0]), groups=train.id.values)
+    val_preds = []
     tst_preds = []
     val_loss = []
     val_acc = []
@@ -98,11 +99,9 @@ def infer():
 
         model = FlowerImgClassifier(CFG['model_arch'], train.label.nunique()).to(device)
 
-        val_preds = []
-
         #for epoch in range(CFG['epochs']-3):
         for i, epoch in enumerate(CFG['used_epochs']):
-            model.load_state_dict(torch.load(f'save/all_{config_filename}_{CFG["model_arch"]}_fold_{fold}_{epoch}'))
+            model.load_state_dict(torch.load(f'save/{config_filename}_{CFG["model_arch"]}_fold_{fold}_{epoch}'))
             logger.debug("epoch:{}".format(epoch))
             with torch.no_grad():
                 for _ in range(CFG['tta']):
