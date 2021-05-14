@@ -59,11 +59,8 @@ def infer():
     val_acc = []
 
     # 行数を揃えた空のデータフレームを作成
-    cols = ['daisy',
-            'dandelion',
-            'rose',
-            'sunflower',
-            'tulip']
+    cols = ['0',
+            '1']
     oof_df = pd.DataFrame(index=[i for i in range(train.shape[0])],columns=cols)
     y_preds_df = pd.DataFrame(index=[i for i in range(test.shape[0])], columns=cols)
 
@@ -76,9 +73,9 @@ def infer():
         input_shape=(CFG["img_size_h"], CFG["img_size_w"])
 
         valid_ = train.loc[val_idx,:].reset_index(drop=True)
-        valid_ds = FlowerDataset(valid_, './data/train', transforms=get_inference_transforms(input_shape,CFG["transform_way"]), shape=input_shape, output_label=False)
+        valid_ds = FlowerDataset(valid_, './data/input/train', transforms=get_inference_transforms(input_shape,CFG["transform_way"]), shape=input_shape, output_label=False)
 
-        test_ds = FlowerDataset(test, './data/test', transforms=get_inference_transforms(input_shape,CFG["transform_way"]),shape=input_shape, output_label=False)
+        test_ds = FlowerDataset(test, './data/input/test', transforms=get_inference_transforms(input_shape,CFG["transform_way"]),shape=input_shape, output_label=False)
 
 
         val_loader = torch.utils.data.DataLoader(
@@ -124,11 +121,11 @@ def infer():
 
     # 予測値を保存
     oof_df.to_csv(f'data/output/{config_filename}_{CFG["model_arch"]}_oof.csv', index=False)
-    y_preds_df.to_csv(f'data/output/{config_filename}_{CFG["model_arch"]}_test.csv', index=False)
+    y_preds_df.to_csv(f'data/outpls ut/{config_filename}_{CFG["model_arch"]}_test.csv', index=False)
 
     del model
     torch.cuda.empty_cache()
-    return np.argmax(tst_preds, axis=1)
+    return tst_preds
 
 
 if __name__ == '__main__':
@@ -137,6 +134,6 @@ if __name__ == '__main__':
     print(tst_preds_label_all.shape)
     # 予測結果を保存
     sub = pd.read_csv("./data/input/sample_submission.csv")
-    sub['label'] = tst_preds_label_all
+    sub['label'] = np.argmax(tst_preds_label_all, axis=1)
     logger.debug(sub.value_counts("label"))
     sub.to_csv(f'data/output/submission_{config_filename}_{CFG["model_arch"]}.csv', index=False)
