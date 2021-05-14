@@ -1,4 +1,5 @@
 import argparse
+from ast import parse
 import json
 import os
 import datetime
@@ -14,8 +15,10 @@ from sklearn.metrics import  log_loss
 parser = argparse.ArgumentParser()
 parser.add_argument('--config', default='./configs/default.json')
 parser.add_argument('--debug', default=False)
+parser.add_argument('--device', default=0)
 options = parser.parse_args()
 CFG = json.load(open(options.config))
+device = torch.device('cuda:{}'.format(options.device))
 
 # logger の設定
 from logging import getLogger, StreamHandler,FileHandler, Formatter, DEBUG, INFO
@@ -94,7 +97,6 @@ def infer():
             pin_memory=False,
         )
 
-        device = torch.device(CFG['device'])
         model = FlowerImgClassifier(CFG['model_arch'], train.label.nunique()).to(device)
 
         val_preds = []
@@ -121,7 +123,7 @@ def infer():
 
     # 予測値を保存
     oof_df.to_csv(f'data/output/{config_filename}_{CFG["model_arch"]}_oof.csv', index=False)
-    y_preds_df.to_csv(f'data/outpls ut/{config_filename}_{CFG["model_arch"]}_test.csv', index=False)
+    y_preds_df.to_csv(f'data/output/{config_filename}_{CFG["model_arch"]}_test.csv', index=False)
 
     del model
     torch.cuda.empty_cache()
