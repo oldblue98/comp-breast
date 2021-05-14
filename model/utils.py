@@ -26,27 +26,38 @@ def get_img(path):
     im_rgb = im_bgr[:, :, ::-1]
     return im_rgb
 
-def load_train_df(path):
+def load_train_df(path, output_label=True):
     train_df = pd.DataFrame()
     base_train_data_path = path
-
-    train_data_labels = ['0', '1']
-
-    for one_label in train_data_labels:
-        one_label_df = pd.DataFrame()
-        one_label_paths = os.path.join(base_train_data_path, one_label)
-        path_list = os.listdir(one_label_paths)
+    if output_label:
+        train_data_labels = ['0', '1']
+        for one_label in train_data_labels:
+            one_label_df = pd.DataFrame()
+            one_label_paths = os.path.join(base_train_data_path, one_label)
+            path_list = os.listdir(one_label_paths)
+            _path = ','.join(path_list)
+            one_label_df['image_path'] = [os.path.join(one_label_paths, f) for f in path_list]
+            one_label_df['label'] = one_label
+            pattern = '([0-9]*?)_x([0-9]*?)_y([0-9]*?).png'
+            results = re.findall(pattern, _path, re.S)
+            id_df = pd.DataFrame(results, columns=["id", "x", "y"])
+            one_label_df = pd.concat([one_label_df, id_df], axis=1)
+            train_df = pd.concat([train_df, one_label_df])
+    else:
+        path_list = os.listdir(base_train_data_path)
         _path = ','.join(path_list)
-        one_label_df['image_path'] = [os.path.join(one_label_paths, f) for f in path_list]
-        one_label_df['label'] = one_label
+        one_label_df = pd.DataFrame()
+        one_label_df['image_path'] = path_list
         pattern = '([0-9]*?)_x([0-9]*?)_y([0-9]*?).png'
         results = re.findall(pattern, _path, re.S)
         id_df = pd.DataFrame(results, columns=["id", "x", "y"])
         one_label_df = pd.concat([one_label_df, id_df], axis=1)
         train_df = pd.concat([train_df, one_label_df])
+
     train_df = train_df.reset_index(drop=True)
-    label_dic = {"0":0, "1":1}
-    train_df["label"]=train_df["label"].map(label_dic)
+    if output_label:
+        label_dic = {"0":0, "1":1}
+        train_df["label"]=train_df["label"].map(label_dic)
     return train_df
 
 
