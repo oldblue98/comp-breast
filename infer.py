@@ -101,7 +101,7 @@ def infer():
 
         #for epoch in range(CFG['epochs']-3):
         for i, epoch in enumerate(CFG['used_epochs']):
-            model.load_state_dict(torch.load(f'save/{config_filename}_{CFG["model_arch"]}_fold_{fold}_{epoch}'))
+            model.load_state_dict(torch.load(f'save/all_{config_filename}_{CFG["model_arch"]}_fold_{fold}_{epoch}'))
             logger.debug("epoch:{}".format(epoch))
             with torch.no_grad():
                 for _ in range(CFG['tta']):
