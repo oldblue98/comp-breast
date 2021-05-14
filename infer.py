@@ -56,7 +56,7 @@ def infer():
 
     # folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
     folds = GroupKFold(n_splits=5).split(np.arange(train.shape[0]), groups=train.id.values)
-    val_preds = []
+
     tst_preds = []
     val_loss = []
     val_acc = []
@@ -100,6 +100,7 @@ def infer():
         model = FlowerImgClassifier(CFG['model_arch'], train.label.nunique()).to(device)
 
         #for epoch in range(CFG['epochs']-3):
+        val_preds = []
         for i, epoch in enumerate(CFG['used_epochs']):
             model.load_state_dict(torch.load(f'save/all_{config_filename}_{CFG["model_arch"]}_fold_{fold}_{epoch}'))
             logger.debug("epoch:{}".format(epoch))
