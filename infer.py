@@ -46,8 +46,8 @@ from model.utils import seed_everything, load_train_df
 
 test = pd.DataFrame()
 base_test_data_path = './data/input/test/test_image'
-test['image_path'] = [os.path.join(base_test_data_path, f) for f in os.listdir(base_test_data_path)]
-test = test.sort_values('image_path').reset_index(drop=True)
+test['id'] = [os.path.join(base_test_data_path, f) for f in os.listdir(base_test_data_path)]
+test = test.sort_values('id').reset_index(drop=True)
 
 def infer():
     logger.debug("pred start")
@@ -135,7 +135,7 @@ if __name__ == '__main__':
     print(tst_preds_label_all.shape)
     # 予測結果を保存
     sub = pd.read_csv("./data/input/submission.csv")
-    sub = sub.sort_values('image_path').reset_index(drop=True)
+    sub = sub.sort_values('id').reset_index(drop=True)
     sub['label'] = np.argmax(tst_preds_label_all, axis=1)
     logger.debug(sub.value_counts("label"))
     sub.to_csv(f'data/output/submission_{config_filename}_{CFG["model_arch"]}.csv', index=False)
