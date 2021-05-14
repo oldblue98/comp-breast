@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 import torch
 from torch import nn
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold, GroupKFold
 from sklearn.metrics import  log_loss
 
 # 引数で config の設定を行う
@@ -54,9 +54,8 @@ def infer():
     train = load_train_df("./data/input/train/")
     seed_everything(CFG['seed'])
 
-    folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
-
-
+    # folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
+    folds = GroupKFold(n_splits=5).split(np.arange(train.shape[0]), groups=train.id.values)
     tst_preds = []
     val_loss = []
     val_acc = []
