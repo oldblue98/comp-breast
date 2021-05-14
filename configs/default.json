@@ -19,11 +19,9 @@
     "transform_way": "center",
     "tta": 5,
     "used_epochs": [
-        8,
         9
     ],
     "weights": [
-        1,
         1
     ]
 }
