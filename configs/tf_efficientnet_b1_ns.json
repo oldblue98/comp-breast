@@ -1,14 +1,14 @@
 {
     "fold_num": 5,
     "seed": 6,
-    "model_arch": "tf_efficientnet_b2",
+    "model_arch": "tf_efficientnet_b1_ns",
     "img_size_h": 50, 
     "img_size_w": 50, 
     "epochs": 15,
     "min_epoch":7,
     "patience":8,
-    "train_bs": 512,
-    "valid_bs": 512,
+    "train_bs": 256,
+    "valid_bs": 256,
     "T_0": 10,
     "lr": 3e-4,
     "min_lr": 3e-6, 
@@ -19,11 +19,11 @@
     "transform_way": "center",
     "tta": 5,
     "used_epochs": [
-        11,
-        12,
-        13,
-        14,
-        15
+        25,
+        26,
+        27,
+        28,
+        29
     ],
     "weights": [
         1,

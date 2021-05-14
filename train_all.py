@@ -8,24 +8,33 @@ import numpy as np
 import pandas as pd
 import torch
 from torch import nn
-from sklearn.model_selection import StratifiedKFold
-from model.utils import EarlyStopping
+from sklearn.model_selection import StratifiedKFold, GroupKFold
+from model.transform import get_train_transforms, get_valid_transforms
+from model.dataloader import prepare_dataloader
+from model.model import FlowerImgClassifier
+from model.epoch_api import train_one_epoch, valid_one_epoch
+from model.utils import seed_everything, load_train_df, EarlyStopping
 
 # 引数で config の設定を行う
 parser = argparse.ArgumentParser()
+parser.add_argument('--config', default='./configs/default.json')
 parser.add_argument('--debug', default=False)
+parser.add_argument('--device', default="0")
 options = parser.parse_args()
 
 CFG_list = [
     # "./configs/resnext50_32x4d_ver2.json",
-    # "./configs/tf_efficientnet_b1.json",
-    # "./configs/tf_efficientnet_b2_ver2.json",
+    "./configs/tf_efficientnet_b0_ver2.json",
+    # "./configs/tf_efficientnet_b0_ns.json",
+    "./configs/tf_efficientnet_b1.json",
+    # "./configs/tf_efficientnet_b1_ns.json"
+    "./configs/tf_efficientnet_b2.json",
     # "./configs/tf_efficientnet_b3_ver2.json",
     # "./configs/tf_efficientnet_b4_ver2.json",
-    "./configs/tf_efficientnet_b5.json",
-    "./configs/tf_efficientnet_b6.json",
+    # "./configs/tf_efficientnet_b5.json",
+    # "./configs/tf_efficientnet_b6.json",
     # "./configs/inception_resnet_v2.json",
-    "./configs/seresnext50_32x4d.json",
+    # "./configs/seresnext50_32x4d.json",
     # "./configs/vit_base_patch16_224_ver2.json",
     # "./configs/vit_base_resnet50d_224_ver2.json",
     # "./configs/vit_large_patch16_224.json",
@@ -50,43 +59,16 @@ handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
 logger.addHandler(handler_stream)
 logger.addHandler(handler_file)
 
-def load_train_df(path):
-    train_df = pd.DataFrame()
-    base_train_data_path = path
-
-    train_data_labels = ['daisy',
-                        'dandelion',
-                        'rose',
-                        'sunflower',
-                        'tulip']
-
-    for one_label in train_data_labels:
-        one_label_df = pd.DataFrame()
-        one_label_paths = os.path.join(base_train_data_path, one_label)
-        one_label_df['image_path'] = [os.path.join(one_label_paths, f) for f in os.listdir(one_label_paths)]
-        one_label_df['label'] = one_label
-        train_df = pd.concat([train_df, one_label_df])
-    train_df = train_df.reset_index(drop=True)
-    label_dic = {"daisy":0, "dandelion":1, "rose":2,"sunflower":3, "tulip":4}
-    train_df["label"]=train_df["label"].map(label_dic)
-    return train_df
-
 def main(CFG, config_filename):
-
-    from model.transform import get_train_transforms, get_valid_transforms
-    from model.dataloader import prepare_dataloader
-    from model.model import FlowerImgClassifier
-    from model.epoch_api import train_one_epoch, valid_one_epoch
-    from model.utils import seed_everything
 
     logger.debug(CFG)
 
-    train = load_train_df("./data/train/")
+    train = load_train_df("./data/input/train/")
     CFG["best_epoch"] = {}
     seed_everything(CFG['seed'])
 
-    folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
-
+    # folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
+    folds = GroupKFold(n_splits=CFG['fold_num']).split(np.arange(train.shape[0]), groups=train.id.values)
     for fold, (trn_idx, val_idx) in enumerate(folds):
     
         # debug
@@ -103,10 +85,10 @@ def main(CFG, config_filename):
 
         optimizer = torch.optim.Adam(model.parameters(), lr=CFG['lr'], weight_decay=CFG['weight_decay'])
         # scheduler = torch.optim.lr_scheduler.StepLR(optimizer, gamma=0.1, step_size=CFG['epochs']-1)
-        # scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=CFG['T_0'], T_mult=1, eta_min=CFG['min_lr'], last_epoch=-1)
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=CFG['T_0'], T_mult=1, eta_min=CFG['min_lr'], last_epoch=-1)
         # scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer=optimizer, pct_start=0.1, div_factor=25,
         #                                                max_lr=CFG['lr'], epochs=CFG['epochs'], steps_per_epoch=len(train_loader))
-        scheduler = None
+        # scheduler = None
 
         loss_tr = nn.CrossEntropyLoss().to(device) #MyCrossEntropyLoss().to(device)
         loss_fn = nn.CrossEntropyLoss().to(device)

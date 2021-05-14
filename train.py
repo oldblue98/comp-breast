@@ -46,11 +46,10 @@ def main():
     logger.debug(CFG)
 
     train = load_train_df("./data/input/train/")
-
     seed_everything(CFG['seed'])
 
     # folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
-    folds = GroupKFold(n_splits=5).split(np.arange(train.shape[0]), groups=train.id.values)
+    folds = GroupKFold(n_splits=CFG['fold_num']).split(np.arange(train.shape[0]), groups=train.id.values)
     for fold, (trn_idx, val_idx) in enumerate(folds):
         # debug
         if fold > 0 and options.debug:
