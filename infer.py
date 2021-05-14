@@ -46,8 +46,8 @@ from model.utils import seed_everything, load_train_df
 
 test = pd.DataFrame()
 base_test_data_path = './data/input/test/test_image'
-test['id'] = [os.path.join(base_test_data_path, f) for f in os.listdir(base_test_data_path)]
-test = test.sort_values('id').reset_index(drop=True)
+test['image_path'] = [os.path.join(base_test_data_path, f) for f in os.listdir(base_test_data_path)]
+test = test.sort_values('image_path').reset_index(drop=True)
 
 def infer():
     logger.debug("pred start")
