@@ -17,7 +17,7 @@
     "verbose_step": 1,
     "device": "cuda:0",
     "transform_way": "center",
-    "tta": 5,
+    "tta": 1,
     "used_epochs": [
         9
     ],
