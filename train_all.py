@@ -116,7 +116,7 @@ def main(CFG, config_filename):
         del model, optimizer, train_loader, val_loader,  scheduler
         torch.cuda.empty_cache()
         logger.debug("\n")
-    with open(config_filename, 'w') as f:
+    with open(os.path.join("./configs",config_filename), 'w') as f:
         json.dump(CFG, f, indent=4)
 
 if __name__ == '__main__':

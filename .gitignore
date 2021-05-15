@@ -6,7 +6,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+pytorch-image-models/*
 # C extensions
 *.so
 
