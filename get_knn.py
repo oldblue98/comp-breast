@@ -53,6 +53,7 @@ def main():
     oof_df.oof = oof_df.oof.astype(int)
     oof_df.x = oof_df.x.astype(float)//50
     oof_df.y = oof_df.y.astype(float)//50
+    print("oof.x type: ",type(oof_df.x), "oof.y type: ", type(ood_df.y))
     oof_df = oof_df.groupby("id").apply(get_knn)
     oof_f1score = f1_score(oof_df.label, oof_df.valid)
     oof_acc_score = accuracy_score(oof_df.label, oof_df.valid)
@@ -66,8 +67,8 @@ def main():
     df2 = pd.DataFrame(results, columns=["id", "x", "y"])
     df3 = pd.concat([df2, df1], axis=1)
     test_df = pd.concat([test_df, df3], axis=0)
-    test_df.x = test_df.x.astype(int)//50
-    test_df.y = test_df.y.astype(int)//50
+    test_df.x = test_df.x.astype(float)//50
+    test_df.y = test_df.y.astype(float)//50
     test_df = test_df.groupby("id").apply(get_knn)
 
     sub = pd.read_csv("./data/input/submission.csv")
