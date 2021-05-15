@@ -54,8 +54,8 @@ def main():
     oof_df.y = oof_df.y.astype(int)//50
     oof_df = oof_df.groupby("id").apply(get_knn)
     
-    oof_f1score = f1_score(train_df.label, oof_df.label)
-    oof_acc_score = accuracy_score(train_df.label, oof_df.label)
+    oof_f1score = f1_score(train_df.label, oof_df.valid)
+    oof_acc_score = accuracy_score(train_df.label, oof_df.valid)
     logger.debug(f'oof_f1: {oof_f1score}, oof_acc: {oof_acc_score}')
 
     test_df = pd.DataFrame()
