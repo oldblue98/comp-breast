@@ -25,7 +25,7 @@ handler_stream = StreamHandler()
 handler_stream.setLevel(DEBUG)
 handler_stream.setFormatter(Formatter("%(asctime)s: %(message)s"))
 #handler2を作成
-handler_file = FileHandler(filename=f'./logs/inference_{config_filename}_{CFG["model_arch"]}.log')
+handler_file = FileHandler(filename=f'./logs/get_knn_{config_filename}_{CFG["model_arch"]}.log')
 handler_file.setLevel(DEBUG)
 handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
 #loggerに2つのハンドラを設定
@@ -34,7 +34,7 @@ logger.addHandler(handler_file)
 
 th = float(options.th)
 knn = int(options.knn)
-print("th : ",th, "knn : ", knn)
+logger.debug("th : ",th, "knn : ", knn)
 
 def get_knn(df_tmp):
     model = NearestNeighbors(n_neighbors = knn)
@@ -53,8 +53,9 @@ def main():
     oof_df.x = oof_df.x.astype(int)//50
     oof_df.y = oof_df.y.astype(int)//50
     oof_df = oof_df.groupby("id").apply(get_knn)
-    oof_f1score = f1_score(train_df.label, oof_df.valid)
-    oof_acc_score = accuracy_score(train_df.label, oof_df.valid)
+    
+    oof_f1score = f1_score(train_df.label, oof_df.label)
+    oof_acc_score = accuracy_score(train_df.label, oof_df.label)
     logger.debug(f'oof_f1: {oof_f1score}, oof_acc: {oof_acc_score}')
 
     test_df = pd.DataFrame()
