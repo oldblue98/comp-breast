@@ -36,7 +36,6 @@ th = float(options.th)
 knn = int(options.knn)
 
 def get_knn(df_tmp):
-    y_label = df_tmp.loc[:, "label"]
     model = NearestNeighbors(n_neighbors = knn)
     model.fit(df_tmp.loc[:, ["x","y"]].astype(float)//50)
     distances, indices = model.kneighbors(df_tmp.loc[:, ["x", "y"]])
@@ -48,7 +47,7 @@ def main():
     train_df = load_train_df("./data/input/train/")
     oof_csv = pd.read_csv(f'./data/output/{config_filename}_{CFG["model_arch"]}_oof.csv')
     oof_df = train_df.copy()
-    oof_df["oof"] = oof_csv.loc[:, ["0", "1"]].idxmax(axis=1)
+    oof_df["label"] = oof_csv.loc[:, ["0", "1"]].idxmax(axis=1)
     oof_df.label = oof_df.label.astype(int)
     oof_df.oof = oof_df.oof.astype(int)
     oof_df = oof_df.groupby("id").apply(get_knn)
