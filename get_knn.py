@@ -53,6 +53,8 @@ def main():
     oof_df.x = oof_df.x.astype(int)//50
     oof_df.y = oof_df.y.astype(int)//50
     oof_df = oof_df.groupby("id").apply(get_knn)
+    oof_df.to_csv(f'data/output/default_oof_df.csv', index=False)
+
     
     print(f'train.shape : {train_df.shape}, oof.shape : {oof_df.shape}')
     print(f'train.col : {train_df.columns}, oof.col : {oof_df.columns}')
