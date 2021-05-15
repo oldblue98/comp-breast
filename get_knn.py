@@ -34,6 +34,7 @@ logger.addHandler(handler_file)
 
 th = float(options.th)
 knn = int(options.knn)
+print("th : ",th, "knn : ", knn)
 
 def get_knn(df_tmp):
     model = NearestNeighbors(n_neighbors = knn)
