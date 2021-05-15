@@ -52,23 +52,7 @@ test['image_path'] = [os.path.join(base_test_data_path, f) for f in os.listdir(b
 test = test.sort_values('image_path').reset_index(drop=True)
 
 
-def infer(CFG):
-    # logger の設定
-    from logging import getLogger, StreamHandler,FileHandler, Formatter, DEBUG, INFO
-    logger = getLogger("logger")    #logger名loggerを取得
-    logger.setLevel(DEBUG)  #loggerとしてはDEBUGで
-    #handler1を作成
-    handler_stream = StreamHandler()
-    handler_stream.setLevel(DEBUG)
-    handler_stream.setFormatter(Formatter("%(asctime)s: %(message)s"))
-    #handler2を作成
-    handler_file = FileHandler(filename=f'./logs/all_{config_filename}_{CFG["model_arch"]}.log')
-    handler_file.setLevel(DEBUG)
-    handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
-    #loggerに2つのハンドラを設定
-    logger.addHandler(handler_stream)
-    logger.addHandler(handler_file)
-    logger.debug("pred start")
+def infer(CFG, logger):
 
     train = load_train_df("./data/train/")
     seed_everything(CFG['seed'])
@@ -149,11 +133,28 @@ def infer(CFG):
 
 if __name__ == '__main__':
     for config_filename in CFG_list:
+        # logger の設定
+        from logging import getLogger, StreamHandler,FileHandler, Formatter, DEBUG, INFO
+        logger = getLogger("logger")    #logger名loggerを取得
+        logger.setLevel(DEBUG)  #loggerとしてはDEBUGで
+        #handler1を作成
+        handler_stream = StreamHandler()
+        handler_stream.setLevel(DEBUG)
+        handler_stream.setFormatter(Formatter("%(asctime)s: %(message)s"))
+        #handler2を作成
+        handler_file = FileHandler(filename=f'./logs/all_{config_filename}_{CFG["model_arch"]}.log')
+        handler_file.setLevel(DEBUG)
+        handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
+        #loggerに2つのハンドラを設定
+        logger.addHandler(handler_stream)
+        logger.addHandler(handler_file)
+        logger.debug("pred start")
+
         with open(config_filename) as f:
             CFG = json.load(f)
         config_filename = os.path.splitext(os.path.basename(config_filename))[0]
         logger.debug(CFG)
-        tst_preds_label_all = infer(CFG)
+        tst_preds_label_all = infer(CFG, logger)
         print(tst_preds_label_all.shape)
         # 予測結果を保存
         sub = pd.read_csv("./data/sample_submission.csv")

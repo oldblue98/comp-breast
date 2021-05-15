@@ -16,7 +16,7 @@ parser.add_argument('--config', default='./configs/default.json')
 options = parser.parse_args()
 CFG = json.load(open(options.config))
 
-ensemble_name = "vsk"
+ensemble_name = "b0vit"
 
 params = {
     'boosting_type': 'gbdt',
@@ -33,10 +33,11 @@ params = {
 }
 
 oof_path = [
-    # "tf_efficientnet_b2_ver2_tf_efficientnet_b2_oof.csv",
-    "vit_base_patch16_224_ver2_vit_base_patch16_224_oof.csv",#0.96
+    "tf_efficientnet_b2_tf_efficientnet_b2_oof.csv",
+    "tf_efficientnet_b0_ver2_tf_efficientnet_b0_oof.csv",
+    "vit_base_patch16_224_vit_base_patch16_224_oof.csv",#0.96
     # "vit_base_resnet50d_224_ver2_vit_base_resnet50d_224_oof.csv", #0.93
-    "skresnext50_32x4d_skresnext50_32x4d_oof.csv",#0.94
+    # "skresnext50_32x4d_skresnext50_32x4d_oof.csv",#0.94
     # "seresnext50_32x4d_seresnext50_32x4d_oof.csv",#0.935
     # "tf_efficientnet_b2_ns_tf_efficientnet_b2_ns_oof.csv",#0.93
     # "tf_efficientnet_b3_ns_tf_efficientnet_b3_ns_oof.csv", #0.92
@@ -45,10 +46,11 @@ oof_path = [
 ]
 
 test_path = [
-    # "tf_efficientnet_b2_ver2_tf_efficientnet_b2_test.csv",
-    "vit_base_patch16_224_ver2_vit_base_patch16_224_test.csv",#0.96
+    "tf_efficientnet_b2_tf_efficientnet_b2_test.csv",
+    "tf_efficientnet_b0_ver2_tf_efficientnet_b0_oof.csv",
+    "vit_base_patch16_224_vit_base_patch16_224_test.csv",#0.96
     # "vit_base_resnet50d_224_ver2_vit_base_resnet50d_224_test.csv", #0.93
-    "skresnext50_32x4d_skresnext50_32x4d_test.csv",#0.94
+    # "skresnext50_32x4d_skresnext50_32x4d_test.csv",#0.94
     # "seresnext50_32x4d_seresnext50_32x4d_test.csv",#0.935
     # "tf_efficientnet_b2_ns_tf_efficientnet_b2_ns_test.csv",#0.93
     # "tf_efficientnet_b3_ns_tf_efficientnet_b3_ns_test.csv", #0.92
@@ -149,10 +151,8 @@ def main():
 
         # 予測結果を保存
         sub = pd.read_csv("./data/sample_submission.csv")
-        sub['class'] = np.argmax(tst_preds, axis=1)
-        label_dic = {0:"daisy", 1:"dandelion", 2:"rose", 3:"sunflower", 4:"tulip"}
-        sub["class"] = sub["class"].map(label_dic)
-        logger.debug(sub.value_counts("class"))
+        sub['label'] = np.argmax(tst_preds, axis=1)
+        logger.debug(sub.value_counts("label"))
         sub.to_csv(f'data/output/submission_ensemble_{ensemble_name}_lgb.csv', index=False)
 
 if __name__ == '__main__':
