@@ -157,7 +157,7 @@ if __name__ == '__main__':
         tst_preds_label_all = infer(CFG, logger)
         print(tst_preds_label_all.shape)
         # 予測結果を保存
-        sub = pd.read_csv("./data/output/submission.csv")
+        sub = pd.read_csv("./data/input/submission.csv")
         sub['label'] = tst_preds_label_all
         logger.debug(sub.value_counts("label"))
         sub.to_csv(f'data/output/submission_{config_filename}_{CFG["model_arch"]}.csv', index=False)
