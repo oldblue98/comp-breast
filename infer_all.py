@@ -145,7 +145,7 @@ if __name__ == '__main__':
         handler_stream.setLevel(DEBUG)
         handler_stream.setFormatter(Formatter("%(asctime)s: %(message)s"))
         #handler2を作成
-        handler_file = FileHandler(filename=f'./logs/all_{config_filename}_{CFG["model_arch"]}.log')
+        handler_file = FileHandler(filename=f'./logs/all_{os.path.basename(config_filename)}_{CFG["model_arch"]}.log')
         handler_file.setLevel(DEBUG)
         handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
         #loggerに2つのハンドラを設定
