@@ -21,6 +21,7 @@ parser.add_argument('--config', default='./configs/default.json')
 parser.add_argument('--debug', default=False)
 parser.add_argument('--device', default="0")
 options = parser.parse_args()
+device = torch.device('cuda:{}'.format(options.device))
 
 CFG_list = [
     # "./configs/resnext50_32x4d_ver2.json",
@@ -78,8 +79,6 @@ def main(CFG, config_filename):
         logger.debug(f'Training with fold {fold} started (train:{len(trn_idx)}, val:{len(val_idx)})')
 
         train_loader, val_loader = prepare_dataloader(train, (CFG["img_size_h"], CFG["img_size_w"]), trn_idx, val_idx, data_root='./data/train', train_bs=CFG["train_bs"], valid_bs=CFG["valid_bs"], num_workers=CFG["num_workers"], transform_way=CFG["transform_way"])
-
-        device = torch.device(CFG['device'])
 
         model = FlowerImgClassifier(CFG['model_arch'], train.label.nunique(), pretrained=True).to(device)
 
