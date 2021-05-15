@@ -39,23 +39,23 @@ def get_knn(df_tmp):
     model = NearestNeighbors(n_neighbors = knn)
     model.fit(df_tmp.loc[:, ["x","y"]])
     distances, indices = model.kneighbors(df_tmp.loc[:, ["x", "y"]])
-    y_valid = np.asarray(np.array(df_tmp.label)[indices[:, 1:]].mean(axis=1) >= th, dtype="int")
+    y_valid = np.asarray(np.array(df_tmp.loc[:, "label"])[indices[:, 1:]].mean(axis=1) >= th, dtype="int")
     df_tmp["valid"]  = y_valid
     return df_tmp
 
 def main():
     train_df = load_train_df("./data/input/train/")
     oof_csv = pd.read_csv(f'./data/output/{config_filename}_{CFG["model_arch"]}_oof.csv')
-    oof_df = train_df.copy()
-    oof_df["train_label"] = oof_df["label"].copy()
+    oof_df = train_df.drop("label", axis=1).copy()
+    oof_df["train_label"] = train_df["label"].copy()
     oof_df["label"] = oof_csv.loc[:, ["0", "1"]].idxmax(axis=1)
     oof_df.label = oof_df.label.astype(int)
     oof_df.train_label = oof_df.train_label.astype(int)
     oof_df.x = oof_df.x.astype(float)//50
     oof_df.y = oof_df.y.astype(float)//50
     oof_df = oof_df.groupby("id").apply(get_knn)
-    oof_f1score = f1_score(oof_df.train_label, oof_df.valid)
-    oof_acc_score = accuracy_score(oof_df.train_label, oof_df.valid)
+    oof_f1score = f1_score(oof_df.train_label, oof_df.label)
+    oof_acc_score = accuracy_score(oof_df.train_label, oof_df.label)
     logger.debug(f'oof_f1: {oof_f1score}, oof_acc: {oof_acc_score}')
 
     test_df = pd.DataFrame()
