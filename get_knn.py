@@ -47,15 +47,14 @@ def main():
     train_df = load_train_df("./data/input/train/")
     oof_csv = pd.read_csv(f'./data/output/{config_filename}_{CFG["model_arch"]}_oof.csv')
     oof_df = train_df.drop("label", axis=1).copy()
-    oof_df["train_label"] = train_df["label"].copy()
     oof_df["label"] = oof_csv.loc[:, ["0", "1"]].idxmax(axis=1)
     oof_df.label = oof_df.label.astype(int)
     oof_df.train_label = oof_df.train_label.astype(int)
-    oof_df.x = oof_df.x.astype(float)//50
-    oof_df.y = oof_df.y.astype(float)//50
+    oof_df.x = oof_df.x.astype(int)//50
+    oof_df.y = oof_df.y.astype(int)//50
     oof_df = oof_df.groupby("id").apply(get_knn)
-    oof_f1score = f1_score(oof_df.train_label, oof_df.label)
-    oof_acc_score = accuracy_score(oof_df.train_label, oof_df.label)
+    oof_f1score = f1_score(train_df.label, oof_df.label)
+    oof_acc_score = accuracy_score(train_df.label, oof_df.label)
     logger.debug(f'oof_f1: {oof_f1score}, oof_acc: {oof_acc_score}')
 
     test_df = pd.DataFrame()
@@ -66,8 +65,8 @@ def main():
     df2 = pd.DataFrame(results, columns=["id", "x", "y"])
     df3 = pd.concat([df2, df1], axis=1)
     test_df = pd.concat([test_df, df3], axis=0)
-    test_df.x = test_df.x.astype(float)//50
-    test_df.y = test_df.y.astype(float)//50
+    test_df.x = test_df.x.astype(int)//50
+    test_df.y = test_df.y.astype(int)//50
     test_df = test_df.groupby("id").apply(get_knn)
 
     sub = pd.read_csv("./data/input/submission.csv")
