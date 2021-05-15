@@ -33,7 +33,7 @@ logger.addHandler(handler_stream)
 logger.addHandler(handler_file)
 
 th = float(options.th)
-knn = float(options.knn)
+knn = int(options.knn)
 
 def get_knn(df_tmp):
     y_label = df_tmp.loc[:, "label"]
