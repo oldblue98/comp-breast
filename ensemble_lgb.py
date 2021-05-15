@@ -7,8 +7,9 @@ import lightgbm as lgb
 
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold, GroupKFold
 from sklearn.metrics import log_loss
+from model.utils import load_train_df
 
 # 引数で config の設定を行う
 parser = argparse.ArgumentParser()
@@ -47,7 +48,7 @@ oof_path = [
 
 test_path = [
     "tf_efficientnet_b2_tf_efficientnet_b2_test.csv",
-    "tf_efficientnet_b0_ver2_tf_efficientnet_b0_oof.csv",
+    "tf_efficientnet_b0_ver2_tf_efficientnet_b0_test.csv",
     "vit_base_patch16_224_vit_base_patch16_224_test.csv",#0.96
     # "vit_base_resnet50d_224_ver2_vit_base_resnet50d_224_test.csv", #0.93
     # "skresnext50_32x4d_skresnext50_32x4d_test.csv",#0.94
@@ -116,12 +117,12 @@ def load_df(path, output_label=True):
 def main():
     oof_df, oof_label = load_df(oof_path)
     test_df = load_df(test_path, output_label=False)
-
+    train = load_train_df("./data/input/train/")
     y_preds = []
     scores_loss = []
     scores_acc = []
-    folds = StratifiedKFold(n_splits=CFG["fold_num"], shuffle=True, random_state=CFG["seed"]).split(np.arange(oof_df.shape[0]), oof_label.values)
-
+    # folds = StratifiedKFold(n_splits=CFG["fold_num"], shuffle=True, random_state=CFG["seed"]).split(np.arange(oof_df.shape[0]), oof_label.values)
+    folds = GroupKFold(n_splits=CFG['fold_num']).split(np.arange(train.shape[0]), groups=train.id.values)
     model = LightGBM(params)
     for fold, (tr_idx, val_idx) in enumerate(folds):
         X_train, X_valid = oof_df.iloc[tr_idx, :], oof_df.iloc[val_idx, :]
