@@ -47,7 +47,7 @@ from model.utils import seed_everything, load_train_df
 
 # testのpath取得
 test = pd.DataFrame()
-base_test_data_path = './data/test/test_image/'
+base_test_data_path = './data/input/test/test_image/'
 test['image_path'] = [os.path.join(base_test_data_path, f) for f in os.listdir(base_test_data_path)]
 test = test.sort_values('image_path').reset_index(drop=True)
 
@@ -78,9 +78,9 @@ def infer(CFG, logger):
         input_shape=(CFG["img_size_h"], CFG["img_size_w"])
 
         valid_ = train.loc[val_idx,:].reset_index(drop=True)
-        valid_ds = FlowerDataset(valid_, './data/train', transforms=get_inference_transforms(input_shape,CFG["transform_way"]), shape=input_shape, output_label=False)
+        valid_ds = FlowerDataset(valid_, './data/input/train', transforms=get_inference_transforms(input_shape,CFG["transform_way"]), shape=input_shape, output_label=False)
 
-        test_ds = FlowerDataset(test, './data/test', transforms=get_inference_transforms(input_shape,CFG["transform_way"]),shape=input_shape, output_label=False)
+        test_ds = FlowerDataset(test, './data/input/test', transforms=get_inference_transforms(input_shape,CFG["transform_way"]),shape=input_shape, output_label=False)
 
 
         val_loader = torch.utils.data.DataLoader(
