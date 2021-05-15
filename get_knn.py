@@ -34,13 +34,13 @@ logger.addHandler(handler_file)
 
 th = float(options.th)
 knn = int(options.knn)
-logger.debug("th : ",th, "knn : ", knn)
+logger.debug(f'th : {th}, knn : {knn}')
 
 def get_knn(df_tmp):
     model = NearestNeighbors(n_neighbors = knn)
     model.fit(df_tmp.loc[:, ["x","y"]])
     distances, indices = model.kneighbors(df_tmp.loc[:, ["x", "y"]])
-    y_valid = np.asarray(np.array(df_tmp.loc[:, "label"])[indices[:, 1:]].mean(axis=1) >= th, dtype="int")
+    y_valid = np.asarray(np.array(df_tmp.label)[indices[:, 1:]].mean(axis=1) >= th, dtype="int")
     df_tmp["valid"]  = y_valid
     return df_tmp
 
