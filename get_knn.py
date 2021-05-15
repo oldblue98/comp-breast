@@ -38,7 +38,6 @@ print("th : ",th, "knn : ", knn)
 
 def get_knn(df_tmp):
     model = NearestNeighbors(n_neighbors = knn)
-    print("in def th : ",th, "knn : ", knn)
     model.fit(df_tmp.loc[:, ["x","y"]])
     distances, indices = model.kneighbors(df_tmp.loc[:, ["x", "y"]])
     y_valid = np.asarray(np.array(df_tmp.loc[:, "label"])[indices[:, 1:]].mean(axis=1) >= th, dtype="int")
@@ -54,8 +53,8 @@ def main():
     oof_df.x = oof_df.x.astype(int)//50
     oof_df.y = oof_df.y.astype(int)//50
     oof_df = oof_df.groupby("id").apply(get_knn)
-    oof_f1score = f1_score(train_df.label, oof_df.label)
-    oof_acc_score = accuracy_score(train_df.label, oof_df.label)
+    oof_f1score = f1_score(train_df.label, oof_df.valid)
+    oof_acc_score = accuracy_score(train_df.label, oof_df.valid)
     logger.debug(f'oof_f1: {oof_f1score}, oof_acc: {oof_acc_score}')
 
     test_df = pd.DataFrame()
