@@ -47,7 +47,7 @@ from model.utils import seed_everything, load_train_df
 
 # testのpath取得
 test = pd.DataFrame()
-base_test_data_path = './data/test/'
+base_test_data_path = './data/test/test_image/'
 test['image_path'] = [os.path.join(base_test_data_path, f) for f in os.listdir(base_test_data_path)]
 test = test.sort_values('image_path').reset_index(drop=True)
 
