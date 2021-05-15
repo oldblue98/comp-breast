@@ -55,7 +55,8 @@ def main():
     oof_df = oof_df.groupby("id").apply(get_knn)
     
     print(f'train.shape : {train_df.shape}, oof.shape : {oof_df.shape}')
-    print(f'train.label == oof.label : {(train_df.label == oof_df.label).sum()/len(train_df)}' )
+    print(f'train.col : {train_df.columns}, oof.col : {oof_df.columns}')
+    print(f'train.label == oof.valid : {(train_df.label == oof_df.valid).sum()/len(train_df)}' )
     oof_f1score = f1_score(train_df.label, oof_df.valid)
     oof_acc_score = accuracy_score(train_df.label, oof_df.valid)
     logger.debug(f'oof_f1: {oof_f1score}, oof_acc: {oof_acc_score}')
