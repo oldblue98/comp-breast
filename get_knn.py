@@ -38,7 +38,7 @@ knn = options.knn
 def get_knn(df_tmp):
     y_label = df_tmp.loc[:, "label"]
     model = NearestNeighbors(n_neighbors = knn)
-    model.fit(df_tmp.loc[:, ["x","y"]].astype(int)//50)
+    model.fit(df_tmp.loc[:, ["x","y"]].astype(float)//50)
     distances, indices = model.kneighbors(df_tmp.loc[:, ["x", "y"]])
     y_valid = np.asarray(np.array(df_tmp.label)[indices[:, 1:]].mean(axis=1) >= th, dtype="int")
     df_tmp["valid"]  = y_valid
