@@ -32,8 +32,8 @@ handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
 logger.addHandler(handler_stream)
 logger.addHandler(handler_file)
 
-th = options.th
-knn = options.knn
+th = float(options.th)
+knn = float(options.knn)
 
 def get_knn(df_tmp):
     y_label = df_tmp.loc[:, "label"]
