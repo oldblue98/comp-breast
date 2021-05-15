@@ -1,0 +1,142 @@
+2021-05-13 23:26:43,163: {'fold_num': 5, 'seed': 6, 'model_arch': 'tf_efficientnet_b0', 'img_size_h': 128, 'img_size_w': 128, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 1028, 'valid_bs': 1028, 'T_0': 10, 'lr': 0.0003, 'min_lr': 3e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 5, 'used_epochs': [8, 9], 'weights': [1, 1]}
+2021-05-13 23:26:43,163: pred start
+2021-05-13 23:29:12,106: {'fold_num': 5, 'seed': 6, 'model_arch': 'tf_efficientnet_b0', 'img_size_h': 128, 'img_size_w': 128, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 1028, 'valid_bs': 1028, 'T_0': 10, 'lr': 0.0003, 'min_lr': 3e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 5, 'used_epochs': [8, 9], 'weights': [1, 1]}
+2021-05-13 23:29:12,106: pred start
+2021-05-13 23:29:13,435:  fold 0 started
+2021-05-13 23:29:27,559: epoch:8
+2021-05-13 23:32:51,540: {'fold_num': 5, 'seed': 6, 'model_arch': 'tf_efficientnet_b0', 'img_size_h': 128, 'img_size_w': 128, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 1028, 'valid_bs': 1028, 'T_0': 10, 'lr': 0.0003, 'min_lr': 3e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 5, 'used_epochs': [8, 9], 'weights': [1, 1]}
+2021-05-13 23:32:51,540: pred start
+2021-05-13 23:32:51,880:  fold 0 started
+2021-05-13 23:32:53,660: epoch:8
+2021-05-13 23:37:47,146: test finished
+2021-05-13 23:38:28,525: test finished
+2021-05-13 23:39:10,318: test finished
+2021-05-13 23:39:52,343: test finished
+2021-05-13 23:40:34,723: test finished
+2021-05-13 23:40:37,132: epoch:9
+2021-05-13 23:41:18,662: test finished
+2021-05-13 23:42:00,239: test finished
+2021-05-13 23:42:41,985: test finished
+2021-05-13 23:43:23,570: test finished
+2021-05-13 23:44:05,128: test finished
+2021-05-14 09:45:45,894: {'fold_num': 5, 'seed': 6, 'model_arch': 'tf_efficientnet_b0', 'img_size_h': 128, 'img_size_w': 128, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 1028, 'valid_bs': 1028, 'T_0': 10, 'lr': 0.0003, 'min_lr': 3e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 5, 'used_epochs': [9], 'weights': [1]}
+2021-05-14 09:45:45,894: pred start
+2021-05-14 09:45:49,946:  fold 0 started
+2021-05-14 09:46:16,247: epoch:9
+2021-05-14 09:51:22,907: test finished
+2021-05-14 09:53:05,151: test finished
+2021-05-14 09:53:47,334: test finished
+2021-05-14 09:54:29,741: test finished
+2021-05-14 09:55:12,099: test finished
+2021-05-14 09:55:12,143:  fold 1 started
+2021-05-14 09:55:13,313: epoch:9
+2021-05-14 09:59:07,058: test finished
+2021-05-14 09:59:48,643: test finished
+2021-05-14 10:00:30,327: test finished
+2021-05-14 10:01:11,979: test finished
+2021-05-14 10:01:53,846: test finished
+2021-05-14 10:01:53,872:  fold 2 started
+2021-05-14 10:01:54,867: epoch:9
+2021-05-14 10:05:49,470: test finished
+2021-05-14 10:06:31,514: test finished
+2021-05-14 10:07:13,343: test finished
+2021-05-14 10:07:55,477: test finished
+2021-05-14 10:08:37,663: test finished
+2021-05-14 10:08:37,689:  fold 3 started
+2021-05-14 10:08:43,734: epoch:9
+2021-05-14 10:12:39,499: test finished
+2021-05-14 10:13:21,631: test finished
+2021-05-14 10:14:03,628: test finished
+2021-05-14 10:14:45,582: test finished
+2021-05-14 10:15:27,590: test finished
+2021-05-14 10:15:27,628:  fold 4 started
+2021-05-14 10:15:35,612: epoch:9
+2021-05-14 10:19:50,664: test finished
+2021-05-14 10:20:32,713: test finished
+2021-05-14 10:21:14,782: test finished
+2021-05-14 10:21:56,820: test finished
+2021-05-14 10:22:39,459: test finished
+2021-05-14 10:22:39,489: validation loss = 0.25674
+2021-05-14 10:22:39,489: validation accuracy = 0.89407
+2021-05-14 10:25:55,225: {'fold_num': 5, 'seed': 6, 'model_arch': 'tf_efficientnet_b0', 'img_size_h': 128, 'img_size_w': 128, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 1028, 'valid_bs': 1028, 'T_0': 10, 'lr': 0.0003, 'min_lr': 3e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 5, 'used_epochs': [9], 'weights': [1]}
+2021-05-14 10:25:55,225: pred start
+2021-05-14 10:25:55,557:  fold 0 started
+2021-05-14 10:25:57,673: epoch:9
+2021-05-14 10:28:08,417: test finished
+2021-05-14 10:28:49,650: test finished
+2021-05-14 10:29:31,615: test finished
+2021-05-14 10:30:13,816: test finished
+2021-05-14 10:30:55,770: test finished
+2021-05-14 10:30:55,790:  fold 1 started
+2021-05-14 10:30:57,824: epoch:9
+2021-05-14 10:31:58,011: test finished
+2021-05-14 10:32:39,200: test finished
+2021-05-14 10:33:20,531: test finished
+2021-05-14 10:34:01,898: test finished
+2021-05-14 10:34:43,169: test finished
+2021-05-14 10:34:43,196:  fold 2 started
+2021-05-14 10:34:44,244: epoch:9
+2021-05-14 10:35:25,477: test finished
+2021-05-14 10:36:06,824: test finished
+2021-05-14 10:36:48,278: test finished
+2021-05-14 10:37:29,721: test finished
+2021-05-14 10:38:10,955: test finished
+2021-05-14 10:38:10,998:  fold 3 started
+2021-05-14 10:38:11,918: epoch:9
+2021-05-14 10:38:53,606: test finished
+2021-05-14 10:39:34,773: test finished
+2021-05-14 10:40:16,061: test finished
+2021-05-14 10:40:57,783: test finished
+2021-05-14 10:41:39,403: test finished
+2021-05-14 10:41:39,434:  fold 4 started
+2021-05-14 10:41:39,590: epoch:9
+2021-05-14 10:42:21,719: test finished
+2021-05-14 10:43:03,240: test finished
+2021-05-14 10:43:44,816: test finished
+2021-05-14 10:44:26,452: test finished
+2021-05-14 10:45:07,929: test finished
+2021-05-14 10:45:08,032: validation loss = 0.25674
+2021-05-14 10:45:08,032: validation accuracy = 0.89407
+2021-05-14 11:00:35,395: {'fold_num': 5, 'seed': 6, 'model_arch': 'tf_efficientnet_b0', 'img_size_h': 128, 'img_size_w': 128, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 1028, 'valid_bs': 1028, 'T_0': 10, 'lr': 0.0003, 'min_lr': 3e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 5, 'used_epochs': [9], 'weights': [1]}
+2021-05-14 11:00:35,396: pred start
+2021-05-14 11:00:35,718:  fold 0 started
+2021-05-14 11:00:37,909: epoch:9
+2021-05-14 11:04:53,476: test finished
+2021-05-14 11:05:33,176: test finished
+2021-05-14 11:06:15,294: test finished
+2021-05-14 11:06:57,314: test finished
+2021-05-14 11:07:39,116: test finished
+2021-05-14 11:07:39,151:  fold 1 started
+2021-05-14 11:07:40,050: epoch:9
+2021-05-14 11:11:38,367: test finished
+2021-05-14 11:12:19,960: test finished
+2021-05-14 11:13:01,691: test finished
+2021-05-14 11:13:42,770: test finished
+2021-05-14 11:14:24,248: test finished
+2021-05-14 11:14:24,277:  fold 2 started
+2021-05-14 11:14:25,228: epoch:9
+2021-05-14 11:18:38,612: test finished
+2021-05-14 11:19:20,787: test finished
+2021-05-14 11:20:02,540: test finished
+2021-05-14 11:20:44,238: test finished
+2021-05-14 11:21:26,303: test finished
+2021-05-14 11:21:26,337:  fold 3 started
+2021-05-14 11:21:32,086: epoch:9
+2021-05-14 11:23:51,202: test finished
+2021-05-14 11:24:34,672: test finished
+2021-05-14 11:25:18,915: test finished
+2021-05-14 11:26:02,305: test finished
+2021-05-14 11:26:46,492: test finished
+2021-05-14 11:26:46,539:  fold 4 started
+2021-05-14 11:26:47,437: epoch:9
+2021-05-14 11:27:31,183: test finished
+2021-05-14 11:28:14,766: test finished
+2021-05-14 11:28:58,673: test finished
+2021-05-14 11:29:42,417: test finished
+2021-05-14 11:30:26,057: test finished
+2021-05-14 11:30:26,105: validation loss = 0.25674
+2021-05-14 11:30:26,105: validation accuracy = 0.89407
+2021-05-14 11:30:28,081: label
+0    75251
+1    26384
+dtype: int64
