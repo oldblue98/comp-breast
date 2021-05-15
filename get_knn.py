@@ -53,7 +53,7 @@ def main():
     oof_df.oof = oof_df.oof.astype(int)
     oof_df.x = oof_df.x.astype(float)//50
     oof_df.y = oof_df.y.astype(float)//50
-    print("oof.x type: ",type(oof_df.x[0]), "oof.y type: ", type(oof_df.y[0]))
+    print("oof.x type: ",type(oof_df.x[0]), oof_df.x[0], "oof.y type: ", type(oof_df.y[0]), oof_df.y[0])
     oof_df = oof_df.groupby("id").apply(get_knn)
     oof_f1score = f1_score(oof_df.label, oof_df.valid)
     oof_acc_score = accuracy_score(oof_df.label, oof_df.valid)
