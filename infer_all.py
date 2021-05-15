@@ -7,13 +7,16 @@ import numpy as np
 import pandas as pd
 import torch
 from torch import nn
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold, GroupKFold
 from sklearn.metrics import  log_loss
 
 # 引数で debug の設定を行う
 parser = argparse.ArgumentParser()
+parser.add_argument('--config', default='./configs/default.json')
 parser.add_argument('--debug', default=False)
+parser.add_argument('--device', default=0)
 options = parser.parse_args()
+device = torch.device('cuda:{}'.format(options.device))
 
 CFG_list = [
     # "./configs/resnext50_32x4d_ver2.json",
@@ -53,7 +56,7 @@ from model.transform import get_train_transforms, get_valid_transforms, get_infe
 from model.dataset import FlowerDataset
 from model.model import FlowerImgClassifier
 from model.epoch_api import train_one_epoch, valid_one_epoch, inference_one_epoch
-from model.utils import seed_everything
+from model.utils import seed_everything, load_train_df
 
 # testのpath取得
 test = pd.DataFrame()
@@ -61,46 +64,21 @@ base_test_data_path = './data/test/'
 test['image_path'] = [os.path.join(base_test_data_path, f) for f in os.listdir(base_test_data_path)]
 test = test.sort_values('image_path').reset_index(drop=True)
 
-def load_train_df(path):
-    # path, labelのdfをロード
-    train_df = pd.DataFrame()
-    base_train_data_path = path
-
-    train_data_labels = ['daisy',
-                        'dandelion',
-                        'rose',
-                        'sunflower',
-                        'tulip']
-
-    for one_label in train_data_labels:
-        one_label_df = pd.DataFrame()
-        one_label_paths = os.path.join(base_train_data_path, one_label)
-        one_label_df['image_path'] = [os.path.join(one_label_paths, f) for f in os.listdir(one_label_paths)]
-        one_label_df['label'] = one_label
-        train_df = pd.concat([train_df, one_label_df])
-    train_df = train_df.reset_index(drop=True)
-    label_dic = {"daisy":0, "dandelion":1, "rose":2,"sunflower":3, "tulip":4}
-    train_df["label"]=train_df["label"].map(label_dic)
-    return train_df
-
 
 def infer(CFG):
     logger.debug("pred start")
     train = load_train_df("./data/train/")
     seed_everything(CFG['seed'])
 
-    folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
-
+    # folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
+    folds = GroupKFold(n_splits=5).split(np.arange(train.shape[0]), groups=train.id.values)
     tst_preds = []
     val_loss = []
     val_acc = []
 
     # 行数を揃えた空のデータフレームを作成
-    cols = ['daisy',
-            'dandelion',
-            'rose',
-            'sunflower',
-            'tulip']
+    cols = ['0',
+            '1']
     oof_df = pd.DataFrame(index=[i for i in range(train.shape[0])],columns=cols)
     y_preds_df = pd.DataFrame(index=[i for i in range(test.shape[0])], columns=cols)
 
@@ -134,7 +112,6 @@ def infer(CFG):
             pin_memory=False,
         )
 
-        device = torch.device(CFG['device'])
         model = FlowerImgClassifier(CFG['model_arch'], train.label.nunique()).to(device)
 
         val_preds = []
@@ -177,8 +154,6 @@ if __name__ == '__main__':
         print(tst_preds_label_all.shape)
         # 予測結果を保存
         sub = pd.read_csv("./data/sample_submission.csv")
-        sub['class'] = tst_preds_label_all
-        label_dic = {"daisy":0, "dandelion":1, "rose":2,"sunflower":3, "tulip":4}
-        sub["class"] = sub["class"].map(label_dic)
-        logger.debug(sub.value_counts("class"))
+        sub['label'] = tst_preds_label_all
+        logger.debug(sub.value_counts("label"))
         sub.to_csv(f'data/output/submission_{config_filename}_{CFG["model_arch"]}.csv', index=False)
