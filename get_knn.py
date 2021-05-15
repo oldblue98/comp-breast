@@ -51,8 +51,8 @@ def main():
     oof_df["oof"] = oof_csv.loc[:, ["0", "1"]].idxmax(axis=1)
     oof_df.label = oof_df.label.astype(int)
     oof_df.oof = oof_df.oof.astype(int)
-    oof_df.x = oof_df.x.astype(int)//50
-    oof_df.y = oof_df.y.astype(int)//50
+    oof_df.x = oof_df.x.astype(float)//50
+    oof_df.y = oof_df.y.astype(float)//50
     oof_df = oof_df.groupby("id").apply(get_knn)
     oof_f1score = f1_score(oof_df.label, oof_df.valid)
     oof_acc_score = accuracy_score(oof_df.label, oof_df.valid)
