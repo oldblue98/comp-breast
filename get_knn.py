@@ -49,7 +49,6 @@ def main():
     oof_df = train_df.drop("label", axis=1).copy()
     oof_df["label"] = oof_csv.loc[:, ["0", "1"]].idxmax(axis=1)
     oof_df.label = oof_df.label.astype(int)
-    oof_df.train_label = oof_df.train_label.astype(int)
     oof_df.x = oof_df.x.astype(int)//50
     oof_df.y = oof_df.y.astype(int)//50
     oof_df = oof_df.groupby("id").apply(get_knn)
