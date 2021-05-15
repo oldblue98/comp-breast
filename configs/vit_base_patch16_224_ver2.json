@@ -4,7 +4,7 @@
     "model_arch": "vit_base_patch16_224",
     "img_size_h": 224, 
     "img_size_w": 224, 
-    "epochs": 40,
+    "epochs": 20,
     "min_epoch":10,
     "patience":7,
     "train_bs": 64,
