@@ -54,7 +54,7 @@ test = test.sort_values('image_path').reset_index(drop=True)
 
 def infer(CFG, logger):
 
-    train = load_train_df("./data/train/")
+    train = load_train_df("./data/input/train/")
     seed_everything(CFG['seed'])
 
     # folds = StratifiedKFold(n_splits=CFG['fold_num'], shuffle=True, random_state=CFG['seed']).split(np.arange(train.shape[0]), train.label.values)
