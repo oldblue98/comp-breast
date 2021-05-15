@@ -20,37 +20,24 @@ device = torch.device('cuda:{}'.format(options.device))
 
 CFG_list = [
     # "./configs/resnext50_32x4d_ver2.json",
-    # "./configs/tf_efficientnet_b1.json",
-    # "./configs/tf_efficientnet_b2_ver2.json",
+    "./configs/tf_efficientnet_b0_ver2.json",
+    # "./configs/tf_efficientnet_b0_ns.json",
+    "./configs/tf_efficientnet_b1.json",
+    # "./configs/tf_efficientnet_b1_ns.json"
+    "./configs/tf_efficientnet_b2.json"
     # "./configs/tf_efficientnet_b3_ver2.json",
     # "./configs/tf_efficientnet_b4_ver2.json",
-    # "./configs/vit_base_patch16_224.json",
-    # "./configs/vit_base_resnet50d_224.json",
-    "./configs/vit_base_patch16_224_ver2.json",
-    "./configs/vit_base_resnet50d_224_ver2.json",
-    # "./configs/vit_large_patch16_224.json"
-    "./configs/inception_resnet_v2.json",
-    "./configs/seresnext50_32x4d.json",
-    "./configs/tf_efficientnet_b2_ns.json",
-    "./configs/tf_efficientnet_b3_ns.json",
-    "./configs/skresnext50_32x4d.json"
+    # "./configs/tf_efficientnet_b5.json",
+    # "./configs/tf_efficientnet_b6.json",
+    # "./configs/inception_resnet_v2.json",
+    # "./configs/seresnext50_32x4d.json",
+    # "./configs/vit_base_patch16_224_ver2.json",
+    # "./configs/vit_base_resnet50d_224_ver2.json",
+    # "./configs/vit_large_patch16_224.json",
+    # "./configs/tf_efficientnet_b2_ns.json",
+    # "./configs/tf_efficientnet_b3_ns.json",
+    # "./configs/skresnext50_32x4d.json"
 ]
-
-# logger の設定
-from logging import getLogger, StreamHandler,FileHandler, Formatter, DEBUG, INFO
-logger = getLogger("logger")    #logger名loggerを取得
-logger.setLevel(DEBUG)  #loggerとしてはDEBUGで
-#handler1を作成
-handler_stream = StreamHandler()
-handler_stream.setLevel(DEBUG)
-handler_stream.setFormatter(Formatter("%(asctime)s: %(message)s"))
-#handler2を作成
-handler_file = FileHandler(filename=f'./logs/inference_all.log')
-handler_file.setLevel(DEBUG)
-handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
-#loggerに2つのハンドラを設定
-logger.addHandler(handler_stream)
-logger.addHandler(handler_file)
 
 from model.transform import get_train_transforms, get_valid_transforms, get_inference_transforms
 from model.dataset import FlowerDataset
@@ -66,7 +53,23 @@ test = test.sort_values('image_path').reset_index(drop=True)
 
 
 def infer(CFG):
+    # logger の設定
+    from logging import getLogger, StreamHandler,FileHandler, Formatter, DEBUG, INFO
+    logger = getLogger("logger")    #logger名loggerを取得
+    logger.setLevel(DEBUG)  #loggerとしてはDEBUGで
+    #handler1を作成
+    handler_stream = StreamHandler()
+    handler_stream.setLevel(DEBUG)
+    handler_stream.setFormatter(Formatter("%(asctime)s: %(message)s"))
+    #handler2を作成
+    handler_file = FileHandler(filename=f'./logs/all_{config_filename}_{CFG["model_arch"]}.log')
+    handler_file.setLevel(DEBUG)
+    handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
+    #loggerに2つのハンドラを設定
+    logger.addHandler(handler_stream)
+    logger.addHandler(handler_file)
     logger.debug("pred start")
+
     train = load_train_df("./data/train/")
     seed_everything(CFG['seed'])
 

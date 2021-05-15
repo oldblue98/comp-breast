@@ -43,23 +43,23 @@ CFG_list = [
     # "./configs/skresnext50_32x4d.json"
 ]
 # logger の設定
-from logging import getLogger, StreamHandler,FileHandler, Formatter, DEBUG, INFO
-logger = getLogger("logger")    #logger名loggerを取得
-logger.setLevel(DEBUG)  #loggerとしてはDEBUGで
-#handler1を作成
-handler_stream = StreamHandler()
-handler_stream.setLevel(DEBUG)
-handler_stream.setFormatter(Formatter("%(asctime)s: %(message)s"))
-#handler2を作成
-# config_filename = os.path.splitext(os.path.basename(options.config))[0]
-handler_file = FileHandler(filename=f'./logs/train_all.log')
-handler_file.setLevel(DEBUG)
-handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
-#loggerに2つのハンドラを設定
-logger.addHandler(handler_stream)
-logger.addHandler(handler_file)
 
 def main(CFG, config_filename):
+    from logging import getLogger, StreamHandler,FileHandler, Formatter, DEBUG, INFO
+    logger = getLogger("logger")    #logger名loggerを取得
+    logger.setLevel(DEBUG)  #loggerとしてはDEBUGで
+    #handler1を作成
+    handler_stream = StreamHandler()
+    handler_stream.setLevel(DEBUG)
+    handler_stream.setFormatter(Formatter("%(asctime)s: %(message)s"))
+    #handler2を作成
+    # config_filename = os.path.splitext(os.path.basename(options.config))[0]
+    handler_file = FileHandler(filename=f'./logs/all_{config_filename}_{CFG["model_arch"]}.log')
+    handler_file.setLevel(DEBUG)
+    handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
+    #loggerに2つのハンドラを設定
+    logger.addHandler(handler_stream)
+    logger.addHandler(handler_file)
 
     logger.debug(CFG)
 
