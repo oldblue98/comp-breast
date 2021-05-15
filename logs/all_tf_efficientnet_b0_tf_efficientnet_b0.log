@@ -1,0 +1,66 @@
+2021-05-14 11:18:17,950: {'fold_num': 5, 'seed': 6, 'model_arch': 'tf_efficientnet_b0', 'img_size_h': 128, 'img_size_w': 128, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 1028, 'valid_bs': 1028, 'T_0': 10, 'lr': 0.0003, 'min_lr': 3e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 5, 'used_epochs': [9], 'weights': [1]}
+2021-05-14 11:18:18,736: Training with fold 0 started (train:140713, val:35176)
+2021-05-14 11:23:25,079: epoch : 0, loss_val : 0.3859, accuracy_val = 0.8566
+2021-05-14 11:24:35,573: epoch : 1, loss_val : 0.3166, accuracy_val = 0.8737
+2021-05-14 11:25:45,967: epoch : 2, loss_val : 0.3008, accuracy_val = 0.8763
+2021-05-14 11:26:56,744: epoch : 3, loss_val : 0.2913, accuracy_val = 0.8797
+2021-05-14 11:28:07,924: epoch : 4, loss_val : 0.2835, accuracy_val = 0.8805
+2021-05-14 11:29:19,623: epoch : 5, loss_val : 0.2775, accuracy_val = 0.8830
+2021-05-14 11:30:30,858: epoch : 6, loss_val : 0.2789, accuracy_val = 0.8814
+2021-05-14 11:31:41,337: epoch : 7, loss_val : 0.2780, accuracy_val = 0.8826
+2021-05-14 11:32:51,477: epoch : 8, loss_val : 0.2763, accuracy_val = 0.8842
+2021-05-14 11:34:01,155: epoch : 9, loss_val : 0.2750, accuracy_val = 0.8841
+2021-05-14 11:34:02,794: 
+
+2021-05-14 11:34:02,796: Training with fold 1 started (train:140713, val:35176)
+2021-05-14 11:35:12,659: epoch : 0, loss_val : 0.4566, accuracy_val = 0.8281
+2021-05-14 11:36:22,274: epoch : 1, loss_val : 0.3615, accuracy_val = 0.8492
+2021-05-14 11:37:31,758: epoch : 2, loss_val : 0.3438, accuracy_val = 0.8548
+2021-05-14 11:38:41,113: epoch : 3, loss_val : 0.3396, accuracy_val = 0.8575
+2021-05-14 11:39:50,360: epoch : 4, loss_val : 0.3229, accuracy_val = 0.8652
+2021-05-14 11:40:59,689: epoch : 5, loss_val : 0.3214, accuracy_val = 0.8644
+2021-05-14 11:42:08,955: epoch : 6, loss_val : 0.3253, accuracy_val = 0.8631
+2021-05-14 11:43:18,242: epoch : 7, loss_val : 0.3221, accuracy_val = 0.8637
+2021-05-14 11:44:27,276: epoch : 8, loss_val : 0.3218, accuracy_val = 0.8639
+2021-05-14 11:45:36,553: epoch : 9, loss_val : 0.3205, accuracy_val = 0.8645
+2021-05-14 11:45:36,823: 
+
+2021-05-14 11:45:36,825: Training with fold 2 started (train:140679, val:35210)
+2021-05-14 11:46:51,041: epoch : 0, loss_val : 0.3106, accuracy_val = 0.8665
+2021-05-14 11:48:00,198: epoch : 1, loss_val : 0.2718, accuracy_val = 0.8866
+2021-05-14 11:49:09,440: epoch : 2, loss_val : 0.2709, accuracy_val = 0.8882
+2021-05-14 11:50:18,575: epoch : 3, loss_val : 0.2679, accuracy_val = 0.8894
+2021-05-14 11:51:28,411: epoch : 4, loss_val : 0.2747, accuracy_val = 0.8867
+2021-05-14 11:52:37,787: epoch : 5, loss_val : 0.2610, accuracy_val = 0.8914
+2021-05-14 11:53:47,208: epoch : 6, loss_val : 0.2636, accuracy_val = 0.8894
+2021-05-14 11:54:56,613: epoch : 7, loss_val : 0.2623, accuracy_val = 0.8900
+2021-05-14 11:56:05,823: epoch : 8, loss_val : 0.2591, accuracy_val = 0.8916
+2021-05-14 11:57:15,275: epoch : 9, loss_val : 0.2630, accuracy_val = 0.8899
+2021-05-14 11:57:15,535: 
+
+2021-05-14 11:57:15,537: Training with fold 3 started (train:140715, val:35174)
+2021-05-14 11:58:29,879: epoch : 0, loss_val : 0.3588, accuracy_val = 0.8466
+2021-05-14 11:59:39,009: epoch : 1, loss_val : 0.3496, accuracy_val = 0.8507
+2021-05-14 12:00:48,156: epoch : 2, loss_val : 0.3301, accuracy_val = 0.8604
+2021-05-14 12:01:57,691: epoch : 3, loss_val : 0.3294, accuracy_val = 0.8577
+2021-05-14 12:03:07,139: epoch : 4, loss_val : 0.3352, accuracy_val = 0.8609
+2021-05-14 12:04:16,362: epoch : 5, loss_val : 0.3255, accuracy_val = 0.8645
+2021-05-14 12:05:25,787: epoch : 6, loss_val : 0.3272, accuracy_val = 0.8623
+2021-05-14 12:06:35,133: epoch : 7, loss_val : 0.3274, accuracy_val = 0.8647
+2021-05-14 12:07:44,270: epoch : 8, loss_val : 0.3256, accuracy_val = 0.8648
+2021-05-14 12:08:53,556: epoch : 9, loss_val : 0.3264, accuracy_val = 0.8649
+2021-05-14 12:08:53,776: 
+
+2021-05-14 12:08:53,778: Training with fold 4 started (train:140736, val:35153)
+2021-05-14 12:10:08,098: epoch : 0, loss_val : 0.3356, accuracy_val = 0.8542
+2021-05-14 12:11:17,163: epoch : 1, loss_val : 0.3182, accuracy_val = 0.8639
+2021-05-14 12:12:26,519: epoch : 2, loss_val : 0.3072, accuracy_val = 0.8684
+2021-05-14 12:13:35,795: epoch : 3, loss_val : 0.3010, accuracy_val = 0.8730
+2021-05-14 12:14:45,329: epoch : 4, loss_val : 0.3000, accuracy_val = 0.8721
+2021-05-14 12:15:54,771: epoch : 5, loss_val : 0.3034, accuracy_val = 0.8712
+2021-05-14 12:17:03,828: epoch : 6, loss_val : 0.2959, accuracy_val = 0.8737
+2021-05-14 12:18:13,293: epoch : 7, loss_val : 0.2937, accuracy_val = 0.8763
+2021-05-14 12:19:22,503: epoch : 8, loss_val : 0.2926, accuracy_val = 0.8762
+2021-05-14 12:20:31,947: epoch : 9, loss_val : 0.2937, accuracy_val = 0.8765
+2021-05-14 12:20:32,169: 
+
