@@ -29,14 +29,14 @@ CFG_list = [
     # "./configs/tf_efficientnet_b0_ns.json",
     "./configs/tf_efficientnet_b1.json",
     # "./configs/tf_efficientnet_b1_ns.json"
-    "./configs/tf_efficientnet_b2.json",
+    "./configs/tf_efficientnet_b2.json"
     # "./configs/tf_efficientnet_b3_ver2.json",
     # "./configs/tf_efficientnet_b4_ver2.json",
     # "./configs/tf_efficientnet_b5.json",
     # "./configs/tf_efficientnet_b6.json",
     # "./configs/inception_resnet_v2.json",
     # "./configs/seresnext50_32x4d.json",
-    "./configs/vit_base_patch16_224.json"
+    # "./configs/vit_base_patch16_224.json"
     # "./configs/vit_base_resnet50d_224_ver2.json",
     # "./configs/vit_large_patch16_224.json",
     # "./configs/tf_efficientnet_b2_ns.json",
