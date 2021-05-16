@@ -44,7 +44,10 @@ CFG_list = [
     # "./configs/skresnext50_32x4d.json",
     "./configs/efficientnetv2_rw_s_ver3.json",
     "./configs/eca_nfnet_l0_ver2.json",
-    "./configs/dm_nfnet_f0_ver2.json"
+    "./configs/dm_nfnet_f0_ver2.json",
+    "./configs/dm_nfnet_f2.json",
+    "./configs/eca_nfnet_l1.json",
+    "./configs/tf_efficientnetv2_s_in21k.json"
 ]
 # logger の設定
 
