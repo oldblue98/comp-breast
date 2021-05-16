@@ -25,11 +25,11 @@ device = torch.device('cuda:{}'.format(options.device))
 
 CFG_list = [
     # "./configs/resnext50_32x4d_ver2.json",
-    "./configs/tf_efficientnet_b0_ver2.json",
+    # "./configs/tf_efficientnet_b0_ver2.json",
     # "./configs/tf_efficientnet_b0_ns.json",
-    "./configs/tf_efficientnet_b1.json",
+    # "./configs/tf_efficientnet_b1.json",
     # "./configs/tf_efficientnet_b1_ns.json"
-    "./configs/tf_efficientnet_b2.json"
+    # "./configs/tf_efficientnet_b2.json"
     # "./configs/tf_efficientnet_b3_ver2.json",
     # "./configs/tf_efficientnet_b4_ver2.json",
     # "./configs/tf_efficientnet_b5.json",
@@ -41,7 +41,10 @@ CFG_list = [
     # "./configs/vit_large_patch16_224.json",
     # "./configs/tf_efficientnet_b2_ns.json",
     # "./configs/tf_efficientnet_b3_ns.json",
-    # "./configs/skresnext50_32x4d.json"
+    # "./configs/skresnext50_32x4d.json",
+    "./configs/efficientnetv2_s.json",
+    "./configs/eca_nfnet_l0.json",
+    "./configs/dm_nfnet_f0.json"
 ]
 # logger の設定
 

@@ -10,8 +10,8 @@ from model.utils import load_train_df
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--config', default='./configs/default.json')
-parser.add_argument('--th', default=0.49)
-parser.add_argument('--knn', default=12)
+parser.add_argument('--th', default=0.40)
+parser.add_argument('--knn', default=13)
 options = parser.parse_args()
 CFG = json.load(open(options.config))
 config_filename = os.path.splitext(os.path.basename(options.config))[0]
@@ -53,7 +53,7 @@ def main():
     oof_df.x = oof_df.x.astype(int)//50
     oof_df.y = oof_df.y.astype(int)//50
     oof_df = oof_df.groupby("id").apply(get_knn)
-    oof_df.to_csv(f'data/output/default_oof_df.csv', index=False)
+    oof_df.to_csv(f'data/output/default_oof_df_.csv', index=False)
 
     
     print(f'train.shape : {train_df.shape}, oof.shape : {oof_df.shape}')
