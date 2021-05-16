@@ -1,0 +1,29 @@
+{
+    "fold_num": 5,
+    "seed": 6,
+    "model_arch": "dm_nfnet_f2",
+    "img_size_h": 256, 
+    "img_size_w": 256, 
+    "epochs": 10,
+    "min_epoch":5,
+    "patience":7,
+    "train_bs": 128,
+    "valid_bs": 128,
+    "T_0": 10,
+    "lr": 5e-5,
+    "min_lr": 1e-6, 
+    "weight_decay": 1e-4,
+    "num_workers": 4,
+    "verbose_step": 1,
+    "device": "cuda:0",
+    "transform_way": "center",
+    "tta": 2,
+    "used_epochs": [
+        8,
+        9
+    ],
+    "weights": [
+        1,
+        1
+    ]
+}
