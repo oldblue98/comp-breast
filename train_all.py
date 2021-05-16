@@ -42,9 +42,9 @@ CFG_list = [
     # "./configs/tf_efficientnet_b2_ns.json",
     # "./configs/tf_efficientnet_b3_ns.json",
     # "./configs/skresnext50_32x4d.json",
-    "./configs/efficientnetv2_rw_s.json",
-    "./configs/eca_nfnet_l0.json",
-    "./configs/dm_nfnet_f0.json"
+    "./configs/efficientnetv2_rw_s_ver3.json",
+    "./configs/eca_nfnet_l0_ver2.json",
+    "./configs/dm_nfnet_f0_ver2.json"
 ]
 # logger の設定
 
