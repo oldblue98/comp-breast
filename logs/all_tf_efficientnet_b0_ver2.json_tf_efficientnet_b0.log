@@ -140,3 +140,151 @@
 2021-05-15 19:14:22,451: test finished
 2021-05-15 19:14:22,484:  fold 3 started
 2021-05-15 19:14:27,478: epoch:12
+2021-05-15 19:17:14,076: test finished
+2021-05-15 19:17:56,347: test finished
+2021-05-15 19:18:05,999: epoch:13
+2021-05-15 19:18:48,918: test finished
+2021-05-15 19:19:32,377: test finished
+2021-05-15 19:19:32,414:  fold 4 started
+2021-05-15 19:19:33,229: epoch:12
+2021-05-15 19:20:16,386: test finished
+2021-05-15 19:20:59,351: test finished
+2021-05-15 19:21:05,107: epoch:13
+2021-05-15 19:21:48,056: test finished
+2021-05-15 19:22:31,063: test finished
+2021-05-15 19:22:31,100: validation loss = 0.29169
+2021-05-15 19:22:31,100: validation accuracy = 0.87491
+2021-05-15 19:22:34,830: label
+0    74453
+1    27182
+dtype: int64
+2021-05-15 19:22:34,910: pred start
+2021-05-15 19:22:34,911: {'fold_num': 5, 'seed': 6, 'model_arch': 'tf_efficientnet_b1', 'img_size_h': 128, 'img_size_w': 128, 'epochs': 15, 'min_epoch': 7, 'patience': 8, 'train_bs': 1028, 'valid_bs': 1028, 'T_0': 10, 'lr': 0.0003, 'min_lr': 3e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 2, 'used_epochs': [13, 14], 'weights': [1, 1]}
+2021-05-15 19:22:35,733:  fold 0 started
+2021-05-15 19:22:37,229: epoch:13
+2021-05-15 19:23:22,390: test finished
+2021-05-15 19:24:05,492: test finished
+2021-05-15 19:24:06,372: epoch:14
+2021-05-15 19:24:49,331: test finished
+2021-05-15 19:25:32,073: test finished
+2021-05-15 19:25:32,120:  fold 1 started
+2021-05-15 19:25:33,332: epoch:13
+2021-05-15 19:26:16,098: test finished
+2021-05-15 19:26:59,418: test finished
+2021-05-15 19:27:06,232: epoch:14
+2021-05-15 19:27:49,062: test finished
+2021-05-15 19:28:32,166: test finished
+2021-05-15 19:28:32,198:  fold 2 started
+2021-05-15 19:28:36,658: epoch:13
+2021-05-15 19:29:20,174: test finished
+2021-05-15 19:30:03,756: test finished
+2021-05-15 19:30:04,723: epoch:14
+2021-05-15 19:30:48,324: test finished
+2021-05-15 19:31:31,843: test finished
+2021-05-15 19:31:31,885:  fold 3 started
+2021-05-15 19:31:33,045: epoch:13
+2021-05-15 19:32:16,731: test finished
+2021-05-15 19:33:00,408: test finished
+2021-05-15 19:33:01,374: epoch:14
+2021-05-15 19:33:44,962: test finished
+2021-05-15 19:34:28,825: test finished
+2021-05-15 19:34:28,874:  fold 4 started
+2021-05-15 19:34:30,601: epoch:13
+2021-05-15 19:35:14,461: test finished
+2021-05-15 19:35:58,332: test finished
+2021-05-15 19:36:05,069: epoch:14
+2021-05-15 19:36:49,210: test finished
+2021-05-15 19:37:33,033: test finished
+2021-05-15 19:37:33,084: validation loss = 0.29153
+2021-05-15 19:37:33,085: validation accuracy = 0.87585
+2021-05-15 19:37:33,848: label
+0    74997
+1    26638
+dtype: int64
+2021-05-15 19:37:33,927: pred start
+2021-05-15 19:37:33,927: {'fold_num': 5, 'seed': 6, 'model_arch': 'tf_efficientnet_b2', 'img_size_h': 128, 'img_size_w': 128, 'epochs': 15, 'min_epoch': 7, 'patience': 8, 'train_bs': 1028, 'valid_bs': 1028, 'T_0': 10, 'lr': 0.0003, 'min_lr': 3e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 6, 'used_epochs': [6, 7, 8], 'weights': [1, 1, 1]}
+2021-05-15 19:37:34,737:  fold 0 started
+2021-05-15 19:37:36,309: epoch:6
+2021-05-15 19:38:20,664: test finished
+2021-05-15 19:39:03,812: test finished
+2021-05-15 19:39:46,960: test finished
+2021-05-15 19:40:30,003: test finished
+2021-05-15 19:41:13,011: test finished
+2021-05-15 19:41:56,118: test finished
+2021-05-15 19:41:57,724: epoch:7
+2021-05-15 19:42:40,833: test finished
+2021-05-15 19:43:24,226: test finished
+2021-05-15 19:44:07,125: test finished
+2021-05-15 19:44:50,471: test finished
+2021-05-15 19:45:33,429: test finished
+2021-05-15 19:46:16,639: test finished
+2021-05-15 19:46:24,098: epoch:8
+2021-05-15 19:47:07,210: test finished
+2021-05-15 19:47:50,368: test finished
+2021-05-15 19:48:33,469: test finished
+2021-05-15 19:49:16,401: test finished
+2021-05-15 19:49:59,693: test finished
+2021-05-15 19:50:42,731: test finished
+2021-05-15 19:50:42,768:  fold 1 started
+2021-05-15 19:50:44,178: epoch:6
+2021-05-15 19:52:17,437: test finished
+2021-05-15 19:53:00,230: test finished
+2021-05-15 19:53:43,846: test finished
+2021-05-15 19:54:27,162: test finished
+2021-05-15 19:55:10,375: test finished
+2021-05-15 19:55:53,379: test finished
+2021-05-15 19:55:54,394: epoch:7
+2021-05-15 19:56:37,075: test finished
+2021-05-15 19:57:20,499: test finished
+2021-05-15 19:58:03,782: test finished
+2021-05-15 19:58:46,988: test finished
+2021-05-15 19:59:29,942: test finished
+2021-05-15 20:00:12,918: test finished
+2021-05-15 20:00:19,028: epoch:8
+2021-05-15 20:01:02,020: test finished
+2021-05-15 20:01:45,553: test finished
+2021-05-15 20:02:28,813: test finished
+2021-05-15 20:03:11,475: test finished
+2021-05-15 20:03:54,781: test finished
+2021-05-15 20:04:37,980: test finished
+2021-05-15 20:04:38,025:  fold 2 started
+2021-05-15 20:04:39,365: epoch:6
+2021-05-15 20:08:46,139: test finished
+2021-05-15 20:09:29,204: test finished
+2021-05-15 20:10:12,252: test finished
+2021-05-15 20:10:55,292: test finished
+2021-05-15 20:11:38,474: test finished
+2021-05-15 20:12:21,738: test finished
+2021-05-15 20:12:22,875: epoch:7
+2021-05-15 20:13:06,183: test finished
+2021-05-15 20:13:49,480: test finished
+2021-05-15 20:14:32,264: test finished
+2021-05-15 20:15:15,406: test finished
+2021-05-15 20:15:58,537: test finished
+2021-05-15 20:16:42,226: test finished
+2021-05-15 20:16:49,596: epoch:8
+2021-05-15 20:17:33,254: test finished
+2021-05-15 20:18:17,051: test finished
+2021-05-15 20:19:00,755: test finished
+2021-05-15 20:19:44,657: test finished
+2021-05-15 20:20:28,238: test finished
+2021-05-15 20:21:12,326: test finished
+2021-05-15 20:21:12,381:  fold 3 started
+2021-05-15 20:21:21,374: epoch:6
+2021-05-15 20:25:18,164: test finished
+2021-05-15 20:26:01,503: test finished
+2021-05-15 20:26:44,818: test finished
+2021-05-15 20:27:27,973: test finished
+2021-05-15 20:28:11,075: test finished
+2021-05-15 20:28:54,399: test finished
+2021-05-15 20:29:01,783: epoch:7
+2021-05-15 20:29:45,081: test finished
+2021-05-15 20:30:28,313: test finished
+2021-05-15 20:31:11,540: test finished
+2021-05-15 20:31:54,947: test finished
+2021-05-15 20:32:38,648: test finished
+2021-05-15 20:33:22,537: test finished
+2021-05-15 20:33:31,408: epoch:8
+2021-05-15 20:34:14,890: test finished
+2021-05-15 20:34:58,674: test finished
+                                       
