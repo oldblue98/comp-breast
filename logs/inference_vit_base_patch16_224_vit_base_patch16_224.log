@@ -64,3 +64,69 @@
 2021-05-15 23:52:55,121: epoch:6
 2021-05-15 23:57:17,462: test finished
 2021-05-16 00:01:40,146: test finished
+2021-05-16 00:06:02,691: test finished
+2021-05-16 00:10:25,891: test finished
+2021-05-16 00:15:13,284: test finished
+2021-05-16 00:15:13,316:  fold 2 started
+2021-05-16 00:15:29,568: epoch:4
+2021-05-16 00:23:18,971: test finished
+2021-05-16 00:27:41,707: test finished
+2021-05-16 00:32:04,735: test finished
+2021-05-16 00:36:27,826: test finished
+2021-05-16 00:40:50,835: test finished
+2021-05-16 00:41:00,975: epoch:5
+2021-05-16 00:45:23,571: test finished
+2021-05-16 10:23:04,762: test finished
+2021-05-16 10:31:05,644: test finished
+2021-05-16 10:35:29,075: test finished
+2021-05-16 10:39:53,194: test finished
+2021-05-16 10:40:00,852: epoch:6
+2021-05-16 10:44:24,879: test finished
+2021-05-16 10:48:49,162: test finished
+2021-05-16 10:53:13,447: test finished
+2021-05-16 10:57:36,470: test finished
+2021-05-16 11:01:59,942: test finished
+2021-05-16 11:02:00,279:  fold 3 started
+2021-05-16 11:02:15,013: epoch:4
+2021-05-16 11:10:08,378: test finished
+2021-05-16 11:14:32,428: test finished
+2021-05-16 11:18:55,970: test finished
+2021-05-16 11:23:20,214: test finished
+2021-05-16 11:27:45,264: test finished
+2021-05-16 11:27:55,334: epoch:5
+2021-05-16 11:32:18,987: test finished
+2021-05-16 11:36:43,366: test finished
+2021-05-16 11:41:07,615: test finished
+2021-05-16 11:45:31,507: test finished
+2021-05-16 11:49:55,766: test finished
+2021-05-16 11:49:59,295: epoch:6
+2021-05-16 11:54:23,340: test finished
+2021-05-16 11:58:47,464: test finished
+2021-05-16 12:03:11,927: test finished
+2021-05-16 12:07:37,139: test finished
+2021-05-16 12:12:01,870: test finished
+2021-05-16 12:12:02,322:  fold 4 started
+2021-05-16 12:12:16,530: epoch:4
+2021-05-16 12:20:06,084: test finished
+2021-05-16 12:24:30,077: test finished
+2021-05-16 12:28:54,288: test finished
+2021-05-16 12:33:18,442: test finished
+2021-05-16 12:37:42,623: test finished
+2021-05-16 12:37:46,146: epoch:5
+2021-05-16 12:42:10,269: test finished
+2021-05-16 12:46:34,323: test finished
+2021-05-16 12:50:58,523: test finished
+2021-05-16 12:55:23,552: test finished
+2021-05-16 12:59:47,793: test finished
+2021-05-16 12:59:52,023: epoch:6
+2021-05-16 13:04:16,071: test finished
+2021-05-16 13:08:40,875: test finished
+2021-05-16 13:13:05,039: test finished
+2021-05-16 13:17:29,099: test finished
+2021-05-16 13:21:52,799: test finished
+2021-05-16 13:21:52,883: validation loss = 0.27208
+2021-05-16 13:21:52,884: validation accuracy = 0.88369
+2021-05-16 13:21:53,990: label
+0    75538
+1    26097
+dtype: int64
