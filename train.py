@@ -56,7 +56,7 @@ def main():
             break
 
         if fold < 2:
-            break
+            continue
         
         logger.debug(f'Training with fold {fold} started (train:{len(trn_idx)}, val:{len(val_idx)})')
 
