@@ -1,0 +1,67 @@
+2021-05-17 00:04:09,305: {'fold_num': 5, 'seed': 6, 'model_arch': 'dm_nfnet_f2', 'img_size_h': 256, 'img_size_w': 256, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 128, 'valid_bs': 128, 'T_0': 10, 'lr': 5e-05, 'min_lr': 1e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 2, 'used_epochs': [8, 9], 'weights': [1, 1]}
+2021-05-17 00:04:10,179: Training with fold 0 started (train:140713, val:35176)
+2021-05-17 00:06:53,066: {'fold_num': 5, 'seed': 6, 'model_arch': 'dm_nfnet_f2', 'img_size_h': 256, 'img_size_w': 256, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 64, 'valid_bs': 64, 'T_0': 10, 'lr': 5e-05, 'min_lr': 1e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 2, 'used_epochs': [8, 9], 'weights': [1, 1]}
+2021-05-17 00:06:53,755: Training with fold 0 started (train:140713, val:35176)
+2021-05-17 00:20:54,815: {'fold_num': 5, 'seed': 6, 'model_arch': 'dm_nfnet_f2', 'img_size_h': 256, 'img_size_w': 256, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 32, 'valid_bs': 32, 'T_0': 10, 'lr': 5e-05, 'min_lr': 1e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 2, 'used_epochs': [8, 9], 'weights': [1, 1]}
+2021-05-17 00:21:00,758: Training with fold 0 started (train:140713, val:35176)
+2021-05-17 00:26:46,884: {'fold_num': 5, 'seed': 6, 'model_arch': 'dm_nfnet_f2', 'img_size_h': 256, 'img_size_w': 256, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 45, 'valid_bs': 45, 'T_0': 10, 'lr': 5e-05, 'min_lr': 1e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 2, 'used_epochs': [8, 9], 'weights': [1, 1]}
+2021-05-17 00:26:47,686: Training with fold 0 started (train:140713, val:35176)
+2021-05-17 00:28:47,199: {'fold_num': 5, 'seed': 6, 'model_arch': 'dm_nfnet_f2', 'img_size_h': 256, 'img_size_w': 256, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 52, 'valid_bs': 52, 'T_0': 10, 'lr': 5e-05, 'min_lr': 1e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 2, 'used_epochs': [8, 9], 'weights': [1, 1]}
+2021-05-17 00:28:47,812: Training with fold 0 started (train:140713, val:35176)
+2021-05-17 00:30:22,361: {'fold_num': 5, 'seed': 6, 'model_arch': 'dm_nfnet_f2', 'img_size_h': 256, 'img_size_w': 256, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 60, 'valid_bs': 60, 'T_0': 10, 'lr': 5e-05, 'min_lr': 1e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 2, 'used_epochs': [8, 9], 'weights': [1, 1]}
+2021-05-17 00:30:22,987: Training with fold 0 started (train:140713, val:35176)
+2021-05-17 03:44:18,674: {'fold_num': 5, 'seed': 6, 'model_arch': 'dm_nfnet_f2', 'img_size_h': 256, 'img_size_w': 256, 'epochs': 10, 'min_epoch': 5, 'patience': 7, 'train_bs': 60, 'valid_bs': 60, 'T_0': 10, 'lr': 5e-05, 'min_lr': 1e-06, 'weight_decay': 0.0001, 'num_workers': 4, 'verbose_step': 1, 'device': 'cuda:0', 'transform_way': 'center', 'tta': 2, 'used_epochs': [8, 9], 'weights': [1, 1]}
+2021-05-17 03:44:19,633: Training with fold 0 started (train:140713, val:35176)
+2021-05-17 04:48:13,512: epoch : 0, loss_val : 0.2788, accuracy_val = 0.8915
+2021-05-17 05:50:39,487: epoch : 1, loss_val : 0.7663, accuracy_val = 0.8063
+2021-05-17 06:52:10,909: epoch : 2, loss_val : 0.7663, accuracy_val = 0.8063
+2021-05-17 07:53:40,197: epoch : 3, loss_val : 0.7663, accuracy_val = 0.8063
+2021-05-17 08:55:16,819: epoch : 4, loss_val : 0.7663, accuracy_val = 0.8063
+2021-05-17 09:56:59,023: epoch : 5, loss_val : 0.7663, accuracy_val = 0.8063
+2021-05-17 10:58:42,685: epoch : 6, loss_val : 0.7663, accuracy_val = 0.8063
+2021-05-17 12:00:16,978: epoch : 7, loss_val : nan, accuracy_val = 0.7048
+2021-05-17 13:01:12,019: epoch : 8, loss_val : nan, accuracy_val = 0.7048
+2021-05-17 14:01:30,644: epoch : 9, loss_val : nan, accuracy_val = 0.7048
+2021-05-17 14:01:31,975: 
+
+2021-05-17 14:01:32,020: Training with fold 1 started (train:140713, val:35176)
+2021-05-17 15:04:30,303: epoch : 0, loss_val : 0.2826, accuracy_val = 0.8840
+2021-05-17 16:07:24,762: epoch : 1, loss_val : 0.5736, accuracy_val = 0.8351
+2021-05-17 17:08:11,428: epoch : 2, loss_val : 0.5736, accuracy_val = 0.8351
+2021-05-17 18:08:52,977: epoch : 3, loss_val : 0.5736, accuracy_val = 0.8351
+2021-05-17 19:09:46,961: epoch : 4, loss_val : 0.5736, accuracy_val = 0.8351
+2021-05-17 20:10:27,444: epoch : 5, loss_val : 0.5736, accuracy_val = 0.8351
+2021-05-17 21:11:08,031: epoch : 6, loss_val : 0.5736, accuracy_val = 0.8351
+2021-05-17 22:11:46,267: epoch : 7, loss_val : 0.5736, accuracy_val = 0.8351
+2021-05-17 23:12:26,559: epoch : 8, loss_val : 0.5736, accuracy_val = 0.8351
+2021-05-18 00:11:30,925: epoch : 9, loss_val : nan, accuracy_val = 0.6724
+2021-05-18 00:11:32,553: 
+
+2021-05-18 00:11:33,770: Training with fold 2 started (train:140679, val:35210)
+2021-05-18 01:14:28,245: epoch : 0, loss_val : 0.2320, accuracy_val = 0.9047
+2021-05-18 02:17:13,625: epoch : 1, loss_val : 0.2701, accuracy_val = 0.8782
+2021-05-18 03:18:57,231: epoch : 2, loss_val : 0.4729, accuracy_val = 0.8867
+2021-05-18 04:18:41,391: epoch : 3, loss_val : nan, accuracy_val = 0.7580
+2021-05-18 05:18:18,620: epoch : 4, loss_val : nan, accuracy_val = 0.7580
+2021-05-18 06:18:13,850: epoch : 5, loss_val : nan, accuracy_val = 0.7580
+2021-05-18 07:18:05,398: epoch : 6, loss_val : nan, accuracy_val = 0.7580
+2021-05-18 08:17:39,738: epoch : 7, loss_val : nan, accuracy_val = 0.7580
+2021-05-18 09:17:28,360: epoch : 8, loss_val : nan, accuracy_val = 0.7580
+2021-05-18 10:17:17,885: epoch : 9, loss_val : nan, accuracy_val = 0.7580
+2021-05-18 10:17:19,347: 
+
+2021-05-18 10:17:19,357: Training with fold 3 started (train:140715, val:35174)
+2021-05-18 11:20:26,763: epoch : 0, loss_val : 0.2976, accuracy_val = 0.8681
+2021-05-18 12:23:21,631: epoch : 1, loss_val : 0.3154, accuracy_val = 0.8736
+2021-05-18 13:26:18,088: epoch : 2, loss_val : 0.2808, accuracy_val = 0.8886
+2021-05-18 14:27:59,529: epoch : 3, loss_val : 11.5908, accuracy_val = 0.6745
+2021-05-18 15:28:47,343: epoch : 4, loss_val : 11.5908, accuracy_val = 0.6745
+2021-05-18 16:29:31,112: epoch : 5, loss_val : 11.5908, accuracy_val = 0.6745
+2021-05-18 17:30:13,730: epoch : 6, loss_val : 11.5908, accuracy_val = 0.6745
+2021-05-18 18:31:00,696: epoch : 7, loss_val : 11.5908, accuracy_val = 0.6745
+2021-05-18 19:31:10,833: epoch : 8, loss_val : 11.5908, accuracy_val = 0.6745
+2021-05-18 20:32:33,276: epoch : 9, loss_val : 11.5908, accuracy_val = 0.6745
+2021-05-18 20:32:34,633: 
+
+2021-05-18 20:32:34,707: Training with fold 4 started (train:140736, val:35153)
+2021-05-18 21:35:18,320: epoch : 0, loss_val : nan, accuracy_val = 0.7503
