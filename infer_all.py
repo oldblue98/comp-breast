@@ -149,6 +149,7 @@ if __name__ == '__main__':
         handler_stream.setLevel(DEBUG)
         handler_stream.setFormatter(Formatter("%(asctime)s: %(message)s"))
         #handler2を作成
+        config_filename = os.path.splitext(os.path.basename(config_filename))[0]
         handler_file = FileHandler(filename=f'./logs/all_{os.path.basename(config_filename)}_{CFG["model_arch"]}.log')
         handler_file.setLevel(DEBUG)
         handler_file.setFormatter(Formatter("%(asctime)s: %(message)s"))
@@ -156,7 +157,6 @@ if __name__ == '__main__':
         logger.addHandler(handler_stream)
         logger.addHandler(handler_file)
         logger.debug("pred start")
-        config_filename = os.path.splitext(os.path.basename(config_filename))[0]
         logger.debug(CFG)
         tst_preds_label_all = infer(CFG, logger)
         print(tst_preds_label_all.shape)
