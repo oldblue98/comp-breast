@@ -17,15 +17,13 @@
     "verbose_step": 1,
     "device": "cuda:0",
     "transform_way": "center",
-    "tta": 4,
+    "tta": 3,
     "used_epochs": [
-        6,
         7,
         8,
         9
     ],
     "weights": [
-        1,
         1,
         1,
         1
