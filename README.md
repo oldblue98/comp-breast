@@ -11,6 +11,8 @@ x,y座標のユークリッド距離を求めて、knnで近傍点をK個抽出
 陽性の数の割合が、閾値以上あれば、それは陽性とした。
 Kや閾値は、validationデータで最適な値を求めた（K=13, th=0.4）
 ![knn_images](./images/knn_sample.png)  
+(左:正解 中:モデルから求めた推定 右:knnによって後処理後)
+
 ### 学習させてみたモデル
 * Vision Transformer (resnetのハイブリッド版も使用)
 * Efficientnet_b2~b4
