@@ -1,4 +1,4 @@
-# comp^breast
+# comp_breast
 ## 今回のやったこと
 画像は50×50を結合させず、モデルごとにresizeして適用
 モデルごとに異なるが、128×128で基本的に使用した。
@@ -10,7 +10,7 @@
 x,y座標のユークリッド距離を求めて、knnで近傍点をK個抽出
 陽性の数の割合が、閾値以上あれば、それは陽性とした。
 Kや閾値は、validationデータで最適な値を求めた（K=13, th=0.4）
-![knn_images](./images/knn_sample)  
+![knn_images](./images/knn_sample.png)  
 ### 学習させてみたモデル
 * Vision Transformer (resnetのハイブリッド版も使用)
 * Efficientnet_b2~b4
